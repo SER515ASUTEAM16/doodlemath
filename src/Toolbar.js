@@ -28,6 +28,7 @@ class Toolbar extends React.Component{
     }
 }
 
+
 // Stretching image to full button size
 const btnStyle = {
     backgroundSize: 'cover',
