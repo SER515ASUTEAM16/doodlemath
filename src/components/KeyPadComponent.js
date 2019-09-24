@@ -34,4 +34,4 @@ class KeyPadComponent extends Component {
 }
 }
 export default KeyPadComponent;
-//  basic design from niinpatel/calculator-react
+//  basic design from github.com/niinpatel/calculator-react
