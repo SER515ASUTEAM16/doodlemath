@@ -1,19 +1,18 @@
 import React from 'react';
 import './App.css';
-import Toolbar from './Toolbar';
-import Canvas from './CanvasPlaceholder';
+import CanvasPlaceholder from "./CanvasPlaceholder";
+
+
 
 function App() {
-
-    return (
+  return (
     <div className="App">
       <header className="App-header">
         <p>
           Welcome to DoodleMath!
         </p>
       </header>
-      <Canvas/>
-      <Toolbar/>
+      <CanvasPlaceholder/>
       <footer>
           <div style={{fontSize: 9}}>
               Icons made by <a href="https://www.flaticon.com/authors/freepik"                               title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"                                                                   title="Flaticon">www.flaticon.com</a>

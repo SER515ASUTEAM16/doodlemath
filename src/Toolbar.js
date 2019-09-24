@@ -2,10 +2,13 @@ import React from 'react';
 
 class Toolbar extends React.Component{
 
-    render() {
+    btnClick = (e) => {
+        this.props.changeExpression(e)
+    }
+       render() {
         return(
             <div>
-                <button id='1' style={btnStyle}>1</button>
+                <button onClick={this.btnClick.bind} id='1' style={btnStyle}>1</button>
                 <button id='2' style={btnStyle}>2</button>
                 <button id='3' style={btnStyle}>3</button>
                 <br/>
@@ -35,5 +38,6 @@ const btnStyle = {
     background : 'grey',
     borderColor : 'Grey'
 };
+
 
 export default Toolbar
