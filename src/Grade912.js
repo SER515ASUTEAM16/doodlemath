@@ -63,7 +63,7 @@ class Grade912 extends Component {
         return (
             <div>
                 <div className="calculator-body">
-                    <h1>Simple Calculator</h1>
+                    <h1 align = "center">Class 9- 12 Advanced Scientific DoodleMath</h1>
                     <ResultComponent result={this.state.result}/>
                     <KeyPadComponent onClick={this.onClick}/>
                 </div>
