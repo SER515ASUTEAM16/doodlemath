@@ -10,8 +10,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          Welcome to DoodleMath!
-        </p>
+    APP.js header        </p>
       </header>
       <Blocks/>
       <footer>

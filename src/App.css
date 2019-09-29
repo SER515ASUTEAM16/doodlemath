@@ -5,16 +5,57 @@
 .App-logo {
   height: 40vmin;
 }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.result {
+  height: 60px;
+  background-color: #bbb;
+  width: 100%;
+}
 
+.result p {
+  font-size: 40px;
+  margin: 5px;
+
+}
+
+.calculator-body {
+  max-width: 400px;
+  margin: 50px;
+}
+
+.button {
+  display: block;
+  background-color: #bbb;
+}
+
+button {
+  width: 25%;
+  height: 60px;
+  font-size: 30px;
+}
 .App-header {
   background-color: #282c34;
   min-height: 20vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #213406;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #3eff1b;
 }
 
 .App-link {
@@ -24,3 +65,4 @@
 button{
   margin: 5px;
 }
+/*Design inspired from github.com/niinpatel/calculator-react*/
