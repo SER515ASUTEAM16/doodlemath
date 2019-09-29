@@ -29,8 +29,15 @@ class KeyPadComponent extends Component {
             <button name="0" onClick={e => this.props.onClick(e.target.name)}>0</button>
             <button name="/" onClick={e => this.props.onClick(e.target.name)}>÷</button><br/>
 
-            <button name="=" onClick={e => this.props.onClick(e.target.name)}>=</button>
-<br/>
+            <button name="=" onClick={e => this.props.onClick(e.target.name)}>=</button><br/>
+
+            <button name="sin" onClick={e => this.props.onClick(e.target.name)}>sin()</button>
+            <button name="cos" onClick={e => this.props.onClick(e.target.name)}>cos()</button>
+            <button name="tan" onClick={e => this.props.onClick(e.target.name)}>tan()</button>
+            <button name="sec" onClick={e => this.props.onClick(e.target.name)}>sec()</button>
+            <button name="cosec" onClick={e => this.props.onClick(e.target.name)}>cosec()</button>
+            <button name="cot" onClick={e => this.props.onClick(e.target.name)}>cot()</button><br/>
+
 
         </div>
     );
