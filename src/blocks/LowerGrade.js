@@ -38,6 +38,21 @@ const toolbox = `
                     <field name="NUM">4</field>           
                </block>
            </category>
+           <category name="operators">
+                <block type="math_arithmetic" editable="false">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                    <shadow type="math_number">
+                        <field name="NUM">1</field>
+                    </shadow>
+                    </value>
+                    <value name="B">
+                    <shadow type="math_number">
+                        <field name="NUM">1</field>
+                    </shadow>
+                    </value>
+                </block>
+            </category>
          </xml>`
 
 class LowerGrade extends React.Component {
