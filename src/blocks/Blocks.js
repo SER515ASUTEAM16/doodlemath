@@ -48,7 +48,6 @@ class Blocks extends React.Component {
     render() {
         return (
             <div>
-                <h2>BlocklyDiv</h2>
                 <div id="blocklyContainer">
                     <div id="blocklyDiv" ref="blocklyDiv" style={{height: '480px', width: '1000px'}}></div>
                 </div>
