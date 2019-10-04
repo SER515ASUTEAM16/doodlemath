@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import CanvasPlaceholder from "./CanvasPlaceholder";
+import Blocks from "./blocks/Blocks";
 
 
 
@@ -12,7 +13,7 @@ function App() {
           Welcome to DoodleMath!
         </p>
       </header>
-      <CanvasPlaceholder/>
+      <Blocks/>
       <footer>
           <div style={{fontSize: 9}}>
               Icons made by <a href="https://www.flaticon.com/authors/freepik"                               title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"                                                                   title="Flaticon">www.flaticon.com</a>
