@@ -51,7 +51,7 @@ class Grade912 extends Component {
                 break;
             case "cot":
                 this.setState({
-                    result: ((1 / Math.cot(this.state.result)) || "" ) + ""
+                    result: ((1 / Math.tan(this.state.result)) || "" ) + ""
                 })
                 break;
             default:
