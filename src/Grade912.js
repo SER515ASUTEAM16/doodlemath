@@ -53,7 +53,7 @@ class Grade912 extends Component {
         })
     };
 
-    backspace = () => {
+    backspace = () =>{
         this.setState({
             result: this.state.result.slice(0, -1)
         })
