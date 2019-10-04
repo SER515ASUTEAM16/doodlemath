@@ -2,7 +2,6 @@
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Grade912 from "./Grade912";
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));

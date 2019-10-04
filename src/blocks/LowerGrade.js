@@ -40,9 +40,9 @@ const toolbox = `
            </category>
          </xml>`
 
-class Blocks extends React.Component {
+class LowerGrade extends React.Component {
     componentDidMount() {
-        var workspace = Blockly.inject("blocklyDiv", {toolbox: toolbox});
+        Blockly.inject("blocklyDiv", {toolbox: toolbox});
     }
 
     render() {
@@ -56,4 +56,4 @@ class Blocks extends React.Component {
     }
 }
 
-export default Blocks;
+export default LowerGrade;
