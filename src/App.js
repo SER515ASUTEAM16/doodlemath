@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import LowerGrade from "./blocks/LowerGrade";
+import HigherGrade from "./blocks/HigherGrade"
 import Grade912 from "./Grade912";
 import {Route, Link, BrowserRouter as Router} from 'react-router-dom'
 
@@ -13,7 +14,7 @@ function App() {
             </header>
             <Router>
                 <Route path="/grade1-5" component={LowerGrade}/>
-                <Route path="/grade9-12" component={Grade912}/>
+                <Route path="/grade9-12" component={HigherGrade}/>
 
                 <Link to="/grade1-5">
                     <button>Lower Grade</button>
