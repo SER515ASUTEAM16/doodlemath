@@ -2,8 +2,9 @@ import React from 'react';
 import './App.css';
 import LowerGrade from "./blocks/LowerGrade";
 import HigherGrade from "./blocks/HigherGrade"
-import Grade912 from "./Grade912";
+import Advanced1 from "./blocks/Advanced1";
 import {Route, Link, BrowserRouter as Router} from 'react-router-dom'
+
 
 
 function App() {
@@ -15,18 +16,19 @@ function App() {
             <Router>
                 <Route path="/grade1-5" component={LowerGrade}/>
                 <Route path="/grade9-12" component={HigherGrade}/>
+                <Route path="/Advanced1" component={Advanced1}/>
 
                 <Link to="/grade1-5">
                     <button>Lower Grade</button>
                 </Link>
-
-
                 <Link to="/grade9-12">
                     <button>Higher Grade</button>
                 </Link>
+                <Link to="/Advanced1">
+                    <button>Advanced 1</button>
+                </Link>
 
             </Router>
-
             <footer>
                 <div style={{fontSize: 9}}>
                     Icons made by <a href="https://www.flaticon.com/authors/freepik"
