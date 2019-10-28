@@ -33,8 +33,6 @@ function App() {
                 <button>Advanced 2</button>
             </Link>
 
-
-
             </Router>
 
         </div>
