@@ -95,6 +95,13 @@ const toolbox = `
          </xml>`
 
 class LowerGrade extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            result: ""
+        };
+    }
+
     componentDidMount() {
         Blockly.inject("blocklyDiv", {toolbox: toolbox});
     }
@@ -102,11 +109,29 @@ class LowerGrade extends React.Component {
     render() {
         return (
             <div>
-                <div id="blocklyContainer">
-                    <div id="blocklyDiv" ref="blocklyDiv" style={{height: '480px', width: '1000px'}}></div>
+                <div id="blocklyContainer" style={{display: 'inline'}}>
+                    <div id="blocklyDiv" ref="blocklyDiv"
+                         style={{height: '480px', width: '1000px', float: 'left'}}></div>
+                    <div style={{height: '480px'}}>
+                        <button onClick={this.printResult}>
+                            Result
+                        </button>
+                        <div>
+                            <p>
+                                {this.state.result}
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
+    }
+
+    printResult = () => {
+        let workspace = Blockly.getMainWorkspace();
+        if (workspace.getAllBlocks().length > 0) {
+            this.setState({result: Blockly.JavaScript.workspaceToCode(Blockly.getMainWorkspace())});
+        }
     }
 }
 
