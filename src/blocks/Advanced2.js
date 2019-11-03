@@ -1,7 +1,7 @@
 import React from 'react'
 import Blockly from 'blockly'
 
-const toolbox = `
+const toolbox =
          <xml>
            <category name="Numbers">
                <block type="math_number" editable="false">
@@ -53,7 +53,7 @@ const toolbox = `
                     </value>
                 </block>
             </category>
-            <Category name="Trig">
+            <category name="Trig">
                 <block type="math_trig" editable="false">   
                 <field name="OP">SIN</field>
                 </block>
@@ -72,8 +72,8 @@ const toolbox = `
                 <block type="math_trig" editable="false">   
                 <field name="OP">ATAN</field>
                 </block>
-            </Category>
-         </xml>`
+            </category>
+         </xml>
 
 class Advanced2 extends React.Component {
     constructor() {
