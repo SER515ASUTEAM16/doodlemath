@@ -85,7 +85,7 @@ class Advanced2 extends React.Component {
     }
 
     componentDidMount() {
-        Blockly.inject("block   lyDiv", {toolbox: toolbox});
+        Blockly.inject("blocklyDiv", {toolbox: toolbox});
     }
 
     render() {
