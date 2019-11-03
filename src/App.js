@@ -21,13 +21,13 @@ function App() {
                 <Route path="/Advanced2" component = {Advanced2}/>
 
                 <Link to="/grade1-5">
-                    <button>Lower Grade</button>
+                    <button>Grades 1 to 4</button>
                 </Link>
                 <Link to="/grade9-12">
-                    <button>Higher Grade</button>
+                    <button>Grades 5 to 8</button>
                 </Link>
                 <Link to="/Advanced1">
-                    <button>Advanced 1</button>
+                    <button>Grades 9 to 12</button>
                 </Link>
                 <Link to="/Advanced2">
                 <button>Advanced 2</button>
