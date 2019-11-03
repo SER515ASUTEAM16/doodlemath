@@ -96,6 +96,10 @@ const toolbox = `
                 <block type="math_trig">                 
                 </block>
             </Category>
+            <Category name="Compare">
+                <block type="logic_compare">
+                </block>
+            </Category>
          </xml>`
 
 class Advanced1 extends React.Component {
