@@ -60,7 +60,7 @@ const toolbox = `
                 </block>
             </Category>
             
-            <category name="Exponential">
+            <category name="Powers">
                 <block type="math_single" editable="false">
                     <field name="OP">EXP</field>
                     <value name="A">
@@ -75,7 +75,20 @@ const toolbox = `
                     </value>
                 </block>
                 <block type="math_single" editable="false">
-                    <field name="OP">LN</field>
+                    <field name="OP">ABS</field>
+                    <value name="A">
+                        <shadow type="math_number">
+                            <field name="NUM">1</field>
+                        </shadow>
+                    </value>
+                    <value name="B">
+                        <shadow type="math_number">
+                            <field name="NUM">1</field>
+                        </shadow>
+                    </value>
+                </block>
+                 <block type="math_single" editable="false">
+                    <field name="OP">POW10</field>
                     <value name="A">
                         <shadow type="math_number">
                             <field name="NUM">1</field>
