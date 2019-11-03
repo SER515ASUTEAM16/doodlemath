@@ -4,6 +4,7 @@ import LowerGrade from "./blocks/LowerGrade";
 import HigherGrade from "./blocks/HigherGrade"
 import Advanced1 from "./blocks/Advanced1";
 import {Route, Link, BrowserRouter as Router} from 'react-router-dom'
+import Advanced2 from "./blocks/Advanced2";
 
 
 
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/grade1-5" component={LowerGrade}/>
                 <Route path="/grade9-12" component={HigherGrade}/>
                 <Route path="/Advanced1" component={Advanced1}/>
+                <Route path="/Advanced2" component = {Advanced2}/>
 
                 <Link to="/grade1-5">
                     <button>Lower Grade</button>
@@ -27,15 +29,11 @@ function App() {
                 <Link to="/Advanced1">
                     <button>Advanced 1</button>
                 </Link>
+                <Link to="/Advanced2">
+                <button>Advanced 2</button>
+            </Link>
 
             </Router>
-            <footer>
-                <div style={{fontSize: 9}}>
-                    Icons made by <a href="https://www.flaticon.com/authors/freepik"
-                                     title="Freepik">Freepik</a> from <a
-                    href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-                </div>
-            </footer>
 
         </div>
     );
