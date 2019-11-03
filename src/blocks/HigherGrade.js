@@ -38,7 +38,8 @@ const toolbox = `
                     <field name="NUM">4</field>           
                </block>
            </category>
-           <category name="operators">
+           
+           <category name="Operators">
                 <block type="math_arithmetic" editable="false">
                     <field name="OP">ADD</field>
                     <value name="A">
@@ -53,10 +54,16 @@ const toolbox = `
                     </value>
                 </block>
             </category>
+            
             <Category name="Compare">
                 <block type="logic_compare">
                 </block>
             </Category>
+            
+            <category name="Exponential">
+                <block type="math_single">
+                </block>
+            </category>
          </xml>`
 
 class HigherGrade extends React.Component {

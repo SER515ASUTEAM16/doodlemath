@@ -100,6 +100,10 @@ const toolbox = `
                 <block type="logic_compare">
                 </block>
             </Category>
+            <category name="Exponential">
+                <block type="math_single">
+                </block>
+            </category>
          </xml>`
 
 class Advanced1 extends React.Component {
