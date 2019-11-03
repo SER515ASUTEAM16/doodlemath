@@ -53,6 +53,10 @@ const toolbox = `
                     </value>
                 </block>
             </category>
+            <Category name="Trig">
+                <block type="math_trig">                 
+                </block>
+            </Category>
          </xml>`
 
 class Advanced2 extends React.Component {
