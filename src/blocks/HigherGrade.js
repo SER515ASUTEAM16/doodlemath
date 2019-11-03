@@ -53,6 +53,10 @@ const toolbox = `
                     </value>
                 </block>
             </category>
+            <Category name="Compare">
+                <block type="logic_compare">
+                </block>
+            </Category>
          </xml>`
 
 class HigherGrade extends React.Component {
