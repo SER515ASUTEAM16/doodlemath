@@ -96,9 +96,10 @@ const toolbox = `
 
 class LowerGrade extends React.Component {
     constructor() {
-        super()
+        super();
         this.state = {
-            result: ""
+            result: "",
+            resultValue: ""
         };
     }
 
@@ -120,6 +121,9 @@ class LowerGrade extends React.Component {
                             <p>
                                 {this.state.result}
                             </p>
+                            <p>
+                               Result = {this.state.resultValue}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -130,7 +134,9 @@ class LowerGrade extends React.Component {
     printResult = () => {
         let workspace = Blockly.getMainWorkspace();
         if (workspace.getAllBlocks().length > 0) {
-            this.setState({result: Blockly.JavaScript.workspaceToCode(Blockly.getMainWorkspace())});
+            let result = Blockly.JavaScript.workspaceToCode(Blockly.getMainWorkspace());
+            this.setState({result: result});
+            this.setState({resultValue: eval(result)});
         }
     }
 }
