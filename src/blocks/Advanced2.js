@@ -54,7 +54,23 @@ const toolbox = `
                 </block>
             </category>
             <Category name="Trig">
-                <block type="math_trig">                 
+                <block type="math_trig" editable="false">   
+                <field name="OP">SIN</field>
+                </block>
+                <block type="math_trig" editable="false">   
+                <field name="OP">COS</field>
+                </block>
+                <block type="math_trig" editable="false">   
+                <field name="OP">TAN</field>
+                </block>
+                <block type="math_trig" editable="false">   
+                <field name="OP">ASIN</field>
+                </block>
+                <block type="math_trig" editable="false">   
+                <field name="OP">ACOS</field>
+                </block>
+                <block type="math_trig" editable="false">   
+                <field name="OP">ATAN</field>
                 </block>
             </Category>
          </xml>`
