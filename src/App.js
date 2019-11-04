@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import LowerGrade from "./blocks/LowerGrade";
 import HigherGrade from "./blocks/HigherGrade"
@@ -15,6 +15,15 @@ function UserLogin() {
                 <Route path="/grade1-5" component={LowerGrade}/>
                 <Route path="/grade9-12" component={HigherGrade}/>
                 <Route path="/Advanced1" component={Advanced1}/>
+                <Link to="/grade1-5">
+                    <button>Beginner</button>
+                </Link>
+                <Link to="/grade9-12">
+                    <button>Intermediate</button>
+                </Link>
+                <Link to="/Advanced1">
+                    <button>Advanced</button>
+                </Link>
             </Router>
         </div>
     )
@@ -59,7 +68,7 @@ class LoginControl extends React.Component {
     }
 
     render() {
-        if (this.state.isLoggedIn == false) {
+        if (this.state.isLoggedIn === false) {
             return (
                 <div className="App">
                     <header className="App-header">
@@ -80,6 +89,5 @@ class LoginControl extends React.Component {
         }
     }
 }
-
 
 export default LoginControl;
