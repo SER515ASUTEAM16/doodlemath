@@ -38,7 +38,8 @@ const toolbox = `
                     <field name="NUM">4</field>           
                </block>
            </category>
-           <category name="operators">
+           
+           <category name="Operators">
                 <block type="math_arithmetic" editable="false">
                     <field name="OP">ADD</field>
                     <value name="A">
@@ -52,7 +53,67 @@ const toolbox = `
                     </shadow>
                     </value>
                 </block>
-            </category>
+           </category>
+            
+           <Category name="Compare">
+                <block type="logic_compare">
+                </block>
+           </Category>
+            
+           <category name="Powers">
+                <block type="math_single" editable="false">
+                    <field name="OP">EXP</field>
+                    <value name="A">
+                        <shadow type="math_number">
+                            <field name="NUM">1</field>
+                        </shadow>
+                    </value>
+                    <value name="B">
+                        <shadow type="math_number">
+                            <field name="NUM">1</field>
+                        </shadow>
+                    </value>
+                </block>
+                <block type="math_single" editable="false">
+                    <field name="OP">ABS</field>
+                    <value name="A">
+                        <shadow type="math_number">
+                            <field name="NUM">1</field>
+                        </shadow>
+                    </value>
+                    <value name="B">
+                        <shadow type="math_number">
+                            <field name="NUM">1</field>
+                        </shadow>
+                    </value>
+                </block>
+                <block type="math_single" editable="false">
+                    <field name="OP">POW10</field>
+                    <value name="A">
+                        <shadow type="math_number">
+                            <field name="NUM">1</field>
+                        </shadow>
+                    </value>
+                    <value name="B">
+                        <shadow type="math_number">
+                            <field name="NUM">1</field>
+                        </shadow>
+                    </value>
+                </block>
+                <block type="math_single" editable="false">
+                    <field name="OP">NEG</field>
+                    <value name="A">
+                        <shadow type="math_number">
+                            <field name="NUM">1</field>
+                        </shadow>
+                    </value>
+                    <value name="B">
+                        <shadow type="math_number">
+                            <field name="NUM">1</field>
+                        </shadow>
+                    </value>
+                </block>
+           </category>
          </xml>`
 
 class HigherGrade extends React.Component {
