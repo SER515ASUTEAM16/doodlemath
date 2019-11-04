@@ -1,5 +1,5 @@
 /*;=============================================================================
-; Title:   Doodlmath BY TEAM 16
+; Title:   Doodlemath BY TEAM 16
 ; Authors: Lokesh Sharma       (lsharma6)    Mail:lsharma6@asu.edu
            Amit Pandey         (apande36)    Mail:apande36@asu.edu
            Vineeth Chitteti    (vchittet)    Mail:vchittet@asu.edu
@@ -18,42 +18,40 @@ const toolbox = `
          <xml>
            <category name="Numbers">                                        //NUMBERS Category created
                <block type="math_number" editable="false">              
-                    <field name="NUM">0</field>                             //0 is added as a block
+                    <field name="NUM">0</field>                             //0 added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">1</field>                             //1 is added as a block
+                    <field name="NUM">1</field>                             //1 added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">2</field>                             //2 is added as a block
+                    <field name="NUM">2</field>                             //2 added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">3</field>                             //3 is added as a block
+                    <field name="NUM">3</field>                             //3 added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">4</field>                             //4 is added as a block
+                    <field name="NUM">4</field>                             //4 added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">5</field>                             //5 is added as a block
+                    <field name="NUM">5</field>                             //5 added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">6</field>                             //6 is added as a block
+                    <field name="NUM">6</field>                             //6 added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">7</field>                             //7 is added as a block
+                    <field name="NUM">7</field>                             //7 added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">8</field>                             //8 is added as a block
+                    <field name="NUM">8</field>                             //8 added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">9</field>                             //9 is added as a block
-               </block>
-               <block type="math_number" editable="false">
-                    <field name="NUM">4</field>           
+                    <field name="NUM">9</field>                             //9 added as a block
                </block>
            </category>
-           <category name="operators">                                      //OPERATORS category created
+           
+           <category name="Operators">                                      //OPERATORS category created
                 <block type="math_arithmetic" editable="false">
-                    <field name="OP">ADD</field>                            //ADDITION operator is added as a block
+                    <field name="OP">ADD</field>                            //ADDITION operator added as a block
                     <value name="A">
                     <shadow type="math_number">
                         <field name="NUM">1</field>                         //Giving a placeholder value 1
@@ -66,7 +64,7 @@ const toolbox = `
                     </value>
                 </block>
                 <block type="math_arithmetic" editable="false">
-                    <field name="OP">MINUS</field>                          //SUBTRACTION operator is added as a block
+                    <field name="OP">MINUS</field>                          //SUBTRACTION operator added as a block
                     <value name="A">
                         <shadow type="math_number">
                             <field name="NUM">1</field>                     //Giving a placeholder value 1
@@ -79,7 +77,7 @@ const toolbox = `
                     </value>
                 </block>
                 <block type="math_arithmetic" editable="false">
-                    <field name="OP">MULTIPLY</field>                       //MULTIPLICATION operator is added as a block
+                    <field name="OP">MULTIPLY</field>                       //MULTIPLICATION operator added as a block
                     <value name="A">
                         <shadow type="math_number">
                             <field name="NUM">1</field>                     //Giving a placeholder value 1
@@ -92,7 +90,7 @@ const toolbox = `
                     </value>
                 </block>
                 <block type="math_arithmetic" editable="false">
-                    <field name="OP">DIVIDE</field>                         //DIVISION operator is added as a block
+                    <field name="OP">DIVIDE</field>                         //DIVISION operator added as a block
                     <value name="A">
                         <shadow type="math_number">
                             <field name="NUM">1</field>                     //Giving a placeholder value 1
@@ -105,82 +103,83 @@ const toolbox = `
                     </value>
                 </block>
            </category>
+           
             <category name="Compare">                                       //COMPARE category created 
                 <block type="logic_compare" editable = "false">
-                    <field name="OP">EQ</field>                             //EQUALITY for comparison is added as a block
+                    <field name="OP">EQ</field>                             //EQUALITY added as a block
                     <value name="A">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                     <value name="B">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                 </block>
                 <block type="logic_compare" editable="false">
-                    <field name="OP">NEQ</field>
+                    <field name="OP">NEQ</field>                            //NOTEQUAL added as a block
                     <value name="A">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                     <value name="B">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                 </block>
                 <block type="logic_compare" editable="false">
-                    <field name="OP">LT</field>
+                    <field name="OP">LT</field>                             //LESS THAN added as a block
                     <value name="A">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                     <value name="B">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                 </block>
                 <block type="logic_compare" editable="false">
-                    <field name="OP">LTE</field>
+                    <field name="OP">LTE</field>                            //LESS THAN or EQUAL TO added as a block 
                     <value name="A">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                     <value name="B">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                 </block>
                 <block type="logic_compare" editable="false">
-                    <field name="OP">GT</field>
+                    <field name="OP">GT</field>                             //GREATE THAN added as a block
                     <value name="A">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                     <value name="B">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                 </block>
                 <block type="logic_compare" editable="false">
-                    <field name="OP">GTE</field>
+                    <field name="OP">GTE</field>                            //GREATER THAN OR EQUAL TO added as a block
                     <value name="A">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                     <value name="B">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                 </block>
@@ -190,7 +189,7 @@ const toolbox = `
 class LowerGrade extends React.Component {
     constructor() {
         super();
-        this.state = {
+        this.state = {                                                      //RESULT variable created
             result: "",
             resultValue: ""
         };
@@ -204,7 +203,7 @@ class LowerGrade extends React.Component {
         return (
             <div>
                 <div id="blocklyContainer" style={{display: 'inline'}}>
-                    <div id="blocklyDiv" ref="blocklyDiv"
+                    <div id="blocklyDiv" ref="blocklyDiv"                               //RESULT is printed
                          style={{height: '480px', width: '1000px', float: 'left'}}></div>
                     <div style={{height: '480px'}}>
                         <button onClick={this.printResult}>
@@ -224,7 +223,7 @@ class LowerGrade extends React.Component {
         )
     }
 
-    printResult = () => {
+    printResult = () => {                                                               //RESULT is calculated
         let workspace = Blockly.getMainWorkspace();
         if (workspace.getAllBlocks().length > 0) {
             let result = Blockly.JavaScript.workspaceToCode(Blockly.getMainWorkspace());
