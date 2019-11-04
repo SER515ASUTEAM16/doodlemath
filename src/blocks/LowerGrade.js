@@ -1,100 +1,113 @@
+/*;=============================================================================
+; Title:   Doodlmath BY TEAM 16
+; Authors: Lokesh Sharma       (lsharma6)    Mail:lsharma6@asu.edu
+           Amit Pandey         (apande36)    Mail:apande36@asu.edu
+           Vineeth Chitteti    (vchittet)    Mail:vchittet@asu.edu
+           Akash Devdhar       (adevdhar)    Mail:adevdhar@asu.edu
+           Guru Preetam Kadiri (gkadiri)     Mail:gkadiri@asu.edu
+;Version:  Version 1.1
+;==================================================================================
+ */
+
+//BEGINNER CLASS
+
 import React from 'react'
 import Blockly from 'blockly'
 
 const toolbox = `
          <xml>
-           <category name="Numbers">
-               <block type="math_number" editable="false">
-                    <field name="NUM">0</field>           
+           <category name="Numbers">                                        //NUMBERS Category created
+               <block type="math_number" editable="false">              
+                    <field name="NUM">0</field>                             //0 is added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">1</field>           
+                    <field name="NUM">1</field>                             //1 is added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">2</field>           
+                    <field name="NUM">2</field>                             //2 is added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">3</field>           
+                    <field name="NUM">3</field>                             //3 is added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">4</field>           
+                    <field name="NUM">4</field>                             //4 is added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">5</field>           
+                    <field name="NUM">5</field>                             //5 is added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">6</field>           
+                    <field name="NUM">6</field>                             //6 is added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">7</field>           
+                    <field name="NUM">7</field>                             //7 is added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">8</field>           
+                    <field name="NUM">8</field>                             //8 is added as a block
                </block>
                <block type="math_number" editable="false">
-                    <field name="NUM">9</field>           
+                    <field name="NUM">9</field>                             //9 is added as a block
                </block>
                <block type="math_number" editable="false">
                     <field name="NUM">4</field>           
                </block>
            </category>
-           <category name="operators">
+           <category name="operators">                                      //OPERATORS category created
                 <block type="math_arithmetic" editable="false">
-                    <field name="OP">ADD</field>
+                    <field name="OP">ADD</field>                            //ADDITION operator is added as a block
                     <value name="A">
                     <shadow type="math_number">
-                        <field name="NUM">1</field>
+                        <field name="NUM">1</field>                         //Giving a placeholder value 1
                     </shadow>
                     </value>
                     <value name="B">
                     <shadow type="math_number">
-                        <field name="NUM">1</field>
+                        <field name="NUM">1</field>                         //Giving a placeholder value 1
                     </shadow>
                     </value>
                 </block>
                 <block type="math_arithmetic" editable="false">
-                    <field name="OP">MINUS</field>
+                    <field name="OP">MINUS</field>                          //SUBTRACTION operator is added as a block
                     <value name="A">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                     <value name="B">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                 </block>
                 <block type="math_arithmetic" editable="false">
-                    <field name="OP">MULTIPLY</field>
+                    <field name="OP">MULTIPLY</field>                       //MULTIPLICATION operator is added as a block
                     <value name="A">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                     <value name="B">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                 </block>
                 <block type="math_arithmetic" editable="false">
-                    <field name="OP">DIVIDE</field>
+                    <field name="OP">DIVIDE</field>                         //DIVISION operator is added as a block
                     <value name="A">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                     <value name="B">
                         <shadow type="math_number">
-                            <field name="NUM">1</field>
+                            <field name="NUM">1</field>                     //Giving a placeholder value 1
                         </shadow>
                     </value>
                 </block>
            </category>
-            <category name="Compare">
+            <category name="Compare">                                       //COMPARE category created 
                 <block type="logic_compare" editable = "false">
-                    <field name="OP">EQ</field>
+                    <field name="OP">EQ</field>                             //EQUALITY for comparison is added as a block
                     <value name="A">
                         <shadow type="math_number">
                             <field name="NUM">1</field>
