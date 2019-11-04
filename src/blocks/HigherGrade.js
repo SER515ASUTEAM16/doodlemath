@@ -100,6 +100,7 @@ class HigherGrade extends React.Component {
             this.setState({resultValue: eval(result)});
         }
     }
+
 }
 
 export default HigherGrade;
