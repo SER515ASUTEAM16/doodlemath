@@ -9,7 +9,7 @@
 ;==================================================================================
  */
 
-//FRONT END blocks and
+//FRONT END blocks
 
 
 import React from 'react';
@@ -21,7 +21,11 @@ import {Route, Link, BrowserRouter as Router} from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-                                                                //setting paths and routes, assigning buttons and values to them
+import Teacher from "./Teacher";
+
+//setting paths and routes, assigning buttons and values to them
+
+
 function UserLogin() {
     return (
         <div>
@@ -39,6 +43,7 @@ function UserLogin() {
                     <button>Advanced</button>
                 </Link>
             </Router>
+            <Teacher/>
         </div>
     )
 }
