@@ -11,8 +11,9 @@
 
 //INTERMEDIATE CLASS
 
-import React from 'react'
-import Blockly from 'blockly'
+import React from 'react';
+import Blockly from 'blockly';
+
 
 const toolbox = `
          <xml>
@@ -87,6 +88,8 @@ const toolbox = `
                 </block>
            </category>
          </xml>`
+
+
 
 class HigherGrade extends React.Component {
     constructor() {
