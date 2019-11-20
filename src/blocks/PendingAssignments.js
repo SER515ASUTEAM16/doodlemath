@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Advanced1 from "./Advanced1";
+import {Route, Link, BrowserRouter as Router} from 'react-router-dom'
 
 
 const useStyles = makeStyles(theme => ({
@@ -26,19 +28,24 @@ export default function SimpleList() {
     return (
         <div className={classes.root}>
             <List component="nav" aria-label="main mailbox folders">
-                <ListItem button>
-                    <ListItemText primary="Assignment 1" />
-                </ListItem>
-                <ListItem button>
-                    <ListItemText primary="Assignment 2" />
-                </ListItem>
-                <ListItem button>
-                    <ListItemText primary="Assignment 3" />
-                </ListItem>
-                <ListItemLink>
-                    <ListItemText primary="Assignment 4" />
-                </ListItemLink>
-            </List>
+                <Router>
+                    <Route path="/Advanced1" component={Advanced1}/>
+                    <Link to="/Advanced1">
+                        <ListItem button>
+                            <ListItemText primary="Assignment 1" />
+                        </ListItem>
+                    </Link>
+                </Router>
+                    <ListItem button>
+                        <ListItemText primary="Assignment 2" />
+                    </ListItem>
+                    <ListItem button>
+                        <ListItemText primary = "Assignment 3" />
+                    </ListItem>
+                    <ListItemLink href = "https://www.google.com/">
+                        <ListItemText primary="Assignment 4" />
+                    </ListItemLink>
+                </List>
         </div>
     );
 }

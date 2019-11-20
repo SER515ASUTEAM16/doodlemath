@@ -46,6 +46,9 @@ function UserLogin() {
                 <Link to="/PendingAssignments">
                     <button>PendingAssi</button>
                 </Link>
+                <Link to="/StudentBar">
+                    <button>Student</button>
+                </Link>
             </Router>
         </div>
     )
