@@ -49,6 +49,7 @@ function UserLogin() {
 }
 
 //LOGIN PAGE UI
+
 function GustLogin(props) {
     return (
         <MuiThemeProvider>
@@ -98,7 +99,7 @@ class LoginControl extends React.Component {
             let input = {
                 email: this.state.userName,
                 password: this.state.password
-            }
+            };
 
             fetch('http://localhost:8080/auth/loginByEmail', {
                 method: 'post',
@@ -106,9 +107,27 @@ class LoginControl extends React.Component {
                 body: JSON.stringify(input)
             }).then(r => r.json())
                 .then((data) => {
-                    console.log(data)
+                    console.log(data);
                     if (data.email === this.state.userName){
-                        this.setState({isLoggedIn: true})
+                        this.setState({isLoggedIn: true});
+                        console.log("Login success");
+                    }
+                })
+        }else{
+            let input = {
+                name: this.state.userName,
+                password: this.state.password
+            };
+
+            fetch('http://localhost:8080/auth/loginByName', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(input)
+            }).then(r => r.json())
+                .then((data) => {
+                    console.log(data);
+                    if (data.name === this.state.userName){
+                        this.setState({isLoggedIn: true});
                         console.log("Login success");
                     }
                 })
