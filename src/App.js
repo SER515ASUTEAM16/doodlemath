@@ -15,8 +15,8 @@
 import React from 'react';
 import './App.css';
 import LowerGrade from "./blocks/LowerGrade";
-import HigherGrade from "./blocks/HigherGrade"
-import Advanced1 from "./blocks/Advanced1";
+import IntermediateGrade from "./blocks/IntermediateGrade"
+import AdvancedGrade from "./blocks/AdvancedGrade";
 import {Route, Link, BrowserRouter as Router} from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -26,26 +26,35 @@ import Teacher from "./Teacher";
 //setting paths and routes, assigning buttons and values to them
 
 
-function UserLogin() {
-    return (
-        <div>
-            <Router>
-                <Route path="/grade1-5" component={LowerGrade}/>
-                <Route path="/grade9-12" component={HigherGrade}/>
-                <Route path="/Advanced1" component={Advanced1}/>
-                <Link to="/grade1-5">
-                    <button>Beginner</button>
-                </Link>
-                <Link to="/grade9-12">
-                    <button>Intermediate</button>
-                </Link>
-                <Link to="/Advanced1">
-                    <button>Advanced</button>
-                </Link>
-            </Router>
-            <Teacher/>
-        </div>
-    )
+function UserLogin(props) {
+
+
+    if (props.role === "teacher") {
+        return (
+            <div>
+                <Teacher/>
+            </div>)
+    }
+    else {
+        return (
+            <div>
+                <Router>
+                    <Route path="/grade1-5" component={LowerGrade}/>
+                    <Route path="/grade5-8" component={IntermediateGrade}/>
+                    <Route path="/grade9-12" component={AdvancedGrade}/>
+                    <Link to="/grade1-5">
+                        <button>Beginner</button>
+                    </Link>
+                    <Link to="/grade5-8">
+                        <button>Intermediate</button>
+                    </Link>
+                    <Link to="/grade9-12">
+                        <button>Advanced</button>
+                    </Link>
+                </Router>
+            </div>
+        )
+    }
 }
 
 //LOGIN PAGE UI
@@ -88,7 +97,8 @@ class LoginControl extends React.Component {
         this.state = {
             isLoggedIn: false,
             userName: '',
-            password: ''
+            password: '',
+            userRole: ''
         };
     }
 
@@ -108,12 +118,15 @@ class LoginControl extends React.Component {
             }).then(r => r.json())
                 .then((data) => {
                     console.log(data);
-                    if (data.email === this.state.userName){
-                        this.setState({isLoggedIn: true});
+                    if (data.email === this.state.userName) {
+                        this.setState({
+                            isLoggedIn: true,
+                            userRole: data.role
+                        });
                         console.log("Login success");
                     }
                 })
-        }else{
+        } else {
             let input = {
                 name: this.state.userName,
                 password: this.state.password
@@ -126,8 +139,11 @@ class LoginControl extends React.Component {
             }).then(r => r.json())
                 .then((data) => {
                     console.log(data);
-                    if (data.name === this.state.userName){
-                        this.setState({isLoggedIn: true});
+                    if (data.name === this.state.userName) {
+                        this.setState({
+                            isLoggedIn: true,
+                            userRole: data.role
+                        });
                         console.log("Login success");
                     }
                 })
@@ -171,7 +187,7 @@ class LoginControl extends React.Component {
                     <header className="App-header">
                         <p>Welcome to DoodleMath!</p>
                     </header>
-                    <UserLogin/>
+                    <UserLogin role={this.state.userRole}/>
                 </div>
             );
         }
