@@ -14,12 +14,15 @@
 
 import React from 'react'
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import {
+    Table,
+    TableBody,
+    TableHeader,
+    TableHeaderColumn,
+    TableRow,
+    TableRowColumn,
+} from 'material-ui/Table';
+
 
 class Teacher extends React.Component {
 
@@ -41,30 +44,28 @@ class Teacher extends React.Component {
     render() {
         return (
             <MuiThemeProvider>
-                    <div style={tableStyle}>
-                        <Paper>
-                            <Table aria-label="simple table">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell align="center">ID</TableCell>
-                                        <TableCell align="center">Name</TableCell>
-                                        <TableCell align="center">Email</TableCell>
-                                        <TableCell align="center">Grade</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {this.state.students.map(data => (
-                                        <TableRow>
-                                            <TableCell component="th" align="center" scope="data">{data.id}</TableCell>
-                                            <TableCell align="center">{data.name}</TableCell>
-                                            <TableCell align="center">{data.email}</TableCell>
-                                            <TableCell align="center">{data.grade}</TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </Paper>
-                    </div>
+                <div style={tableStyle}>
+                    <Table>
+                        <TableHeader editable="true">
+                            <TableRow>
+                                <TableHeaderColumn align="center">ID</TableHeaderColumn>
+                                <TableHeaderColumn align="center">Name</TableHeaderColumn>
+                                <TableHeaderColumn align="center">Email</TableHeaderColumn>
+                                <TableHeaderColumn align="center">Grade</TableHeaderColumn>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {this.state.students.map(data => (
+                                <TableRow key={data.id}>
+                                    <TableRowColumn align="center">{data.id}</TableRowColumn>
+                                    <TableRowColumn align="center">{data.name}</TableRowColumn>
+                                    <TableRowColumn align="center">{data.email}</TableRowColumn>
+                                    <TableRowColumn align="center">{data.grade}</TableRowColumn>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
             </MuiThemeProvider>
         )
     }
@@ -72,8 +73,8 @@ class Teacher extends React.Component {
 
 
 const tableStyle = {
-    padding:'10px',
-    margin:'10px',
+    padding: '10px',
+    margin: '10px',
     border: '2px solid black'
 };
 
