@@ -15,6 +15,7 @@ import './App.css';
 import LowerGrade from "./blocks/LowerGrade";
 import IntermediateGrade from "./blocks/IntermediateGrade"
 import AdvancedGrade from "./blocks/AdvancedGrade";
+import PendAssignment from "./blocks/PendAssignment"
 import {Route, Link, BrowserRouter as Router} from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -45,6 +46,9 @@ function UserLogin(props) {
     }
 }
 
+function PendingAssignment(props) {
+    return (<PendAssignment/>)
+}
 
 //LOGIN PAGE UI
 
@@ -196,6 +200,9 @@ class LoginControl extends React.Component {
                     <header className="App-header">
                         <p>Welcome to DoodleMath!</p>
                     </header>
+                    <div>
+                        <PendAssignment/>
+                    </div>
                     <UserLogin grade={this.state.grade} role={this.state.userRole}/>
                 </div>
             );
