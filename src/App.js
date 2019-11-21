@@ -20,6 +20,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Teacher from "./Teacher";
+import Register from "./Register";
 
 //setting paths and routes, assigning buttons and values to them
 
@@ -28,163 +29,178 @@ function UserLogin(props) {
 
     if (props.role === "teacher") {
         return (<Teacher/>)
-    }
-    else if (props.role === "student") {
+    } else if (props.role === "student") {
         if (props.grade === "1-5") {
             return (<LowerGrade/>)
-        }
-        else if (props.grade === "6-8") {
+        } else if (props.grade === "6-8") {
             return (<IntermediateGrade/>)
         }
         if (props.grade === "9-12") {
             return (<AdvancedGrade/>)
         } else {
-            return(<h1>Invalid grade</h1>)
+            return (<h1>Invalid grade</h1>)
         }
-    }
-    else {
-        return(<h1>Invalid role</h1>)
+    } else {
+        return (<h1>Invalid role</h1>)
     }
 }
 
 
 //LOGIN PAGE UI
 
-    function GustLogin(props) {
-        return (
-            <MuiThemeProvider>
-                <div>
-                    <h2>Sign in</h2>
-                    <TextField
-                        value={props.username}
-                        onChange={props.onUserChange}
-                        hintText="Enter your Username"
-                        floatingLabelText="Username"
-                    />
-                    <br/>
-                    <TextField
-                        value={props.password}
-                        onChange={props.onPassChange}
-                        type="password"
-                        hintText="Enter your Password"
-                        floatingLabelText="Password"
-                    />
-                    <br/>
-                    <RaisedButton label="Submit" primary={true} onClick={props.onClick}/>
-                </div>
-            </MuiThemeProvider>
-        );
-    }
+function GustLogin(props) {
+    return (
+        <MuiThemeProvider>
+            <div>
+                <h2>Sign in</h2>
+                <TextField
+                    value={props.username}
+                    onChange={props.onUserChange}
+                    hintText="Enter your Username"
+                    floatingLabelText="Username"
+                />
+                <br/>
+                <TextField
+                    value={props.password}
+                    onChange={props.onPassChange}
+                    type="password"
+                    hintText="Enter your Password"
+                    floatingLabelText="Password"
+                />
+                <br/>
+                <RaisedButton label="Log In" primary={true} onClick={props.onClick}/>
+                <br/>
+                <br/>
+                <RaisedButton label="Create new Account" primary={true} onClick={props.handleRegister}/>
+            </div>
+        </MuiThemeProvider>
+    );
+}
 
 //CONTROL LOGIN EVENTS
-    class LoginControl extends React.Component {
-        constructor(props) {
-            super(props);
-            this.handleLoginClick = this.handleLoginClick.bind(this);
-            this.handleLogoutClick = this.handleLogoutClick.bind(this);
-            this.handleUserNameInput = this.handleUserNameInput.bind(this);
-            this.handlePassInput = this.handlePassInput.bind(this);
+class LoginControl extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleLoginClick = this.handleLoginClick.bind(this);
+        this.handleLogoutClick = this.handleLogoutClick.bind(this);
+        this.handleUserNameInput = this.handleUserNameInput.bind(this);
+        this.handlePassInput = this.handlePassInput.bind(this);
+        this.handleRegister = this.handleRegister.bind(this);
 
-            this.state = {
-                isLoggedIn: false,
-                userName: '',
-                password: '',
-                userRole: '',
-                grade:''
+        this.state = {
+            isLoggedIn: false,
+            userName: '',
+            password: '',
+            userRole: '',
+            grade: '',
+            registerFlag: false
+        };
+    }
+
+    //When LOGIN is pressed
+    handleLoginClick(e) {
+        const isEmail = this.state.userName.includes("@");
+        if (isEmail) {
+            let input = {
+                email: this.state.userName,
+                password: this.state.password
             };
-        }
 
-        //When LOGIN is pressed
-        handleLoginClick(e) {
-            const isEmail = this.state.userName.includes("@");
-            if (isEmail) {
-                let input = {
-                    email: this.state.userName,
-                    password: this.state.password
-                };
+            fetch('http://localhost:8080/auth/loginByEmail', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(input)
+            }).then(r => r.json())
+                .then((data) => {
+                    console.log(data);
+                    if (data.email === this.state.userName) {
+                        this.setState({
+                            isLoggedIn: true,
+                            userRole: data.role,
+                            grade: data.grade
+                        });
+                        console.log("Login success");
+                    }
+                })
+        } else {
+            let input = {
+                name: this.state.userName,
+                password: this.state.password
+            };
 
-                fetch('http://localhost:8080/auth/loginByEmail', {
-                    method: 'post',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(input)
-                }).then(r => r.json())
-                    .then((data) => {
-                        console.log(data);
-                        if (data.email === this.state.userName) {
-                            this.setState({
-                                isLoggedIn: true,
-                                userRole: data.role,
-                                grade:data.grade
-                            });
-                            console.log("Login success");
-                        }
-                    })
-            } else {
-                let input = {
-                    name: this.state.userName,
-                    password: this.state.password
-                };
-
-                fetch('http://localhost:8080/auth/loginByName', {
-                    method: 'post',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(input)
-                }).then(r => r.json())
-                    .then((data) => {
-                        console.log(data);
-                        if (data.name === this.state.userName) {
-                            this.setState({
-                                isLoggedIn: true,
-                                userRole: data.role,
-                                grade:data.grade
-                            });
-                            console.log("Login success");
-                        }
-                    })
-            }
-        }
-
-        //WHEN LOGOUT is pressed
-        handleLogoutClick(e) {
-            this.setState({isLoggedIn: false});
-        }
-
-        //When username field changed
-        handleUserNameInput(e) {
-            this.setState({userName: e.target.value});
-        }
-
-        //When password field changed
-        handlePassInput(e) {
-            this.setState({password: e.target.value});
-        }
-
-        render() {                                          //prints LOGIN UI
-            if (this.state.isLoggedIn === false) {
-                return (
-                    <div className="App">
-                        <header className="App-header">
-                            <p>Welcome to DoodleMath!</p>
-                        </header>
-                        <GustLogin
-                            username={this.state.userName}
-                            password={this.state.password}
-                            onUserChange={this.handleUserNameInput}
-                            onPassChange={this.handlePassInput}
-                            onClick={this.handleLoginClick}
-                        />
-                    </div>
-                );
-            } else {
-                return (
-                    <div className="App">
-                        <header className="App-header">
-                            <p>Welcome to DoodleMath!</p>
-                        </header>
-                        <UserLogin grade={this.state.grade} role={this.state.userRole}/>
-                    </div>
-                );
-            }
+            fetch('http://localhost:8080/auth/loginByName', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(input)
+            }).then(r => r.json())
+                .then((data) => {
+                    console.log(data);
+                    if (data.name === this.state.userName) {
+                        this.setState({
+                            isLoggedIn: true,
+                            userRole: data.role,
+                            grade: data.grade
+                        });
+                        console.log("Login success");
+                    }
+                })
         }
     }
-    export default LoginControl;
+
+    //WHEN LOGOUT is pressed
+    handleLogoutClick(e) {
+        this.setState({isLoggedIn: false});
+    }
+
+    //When username field changed
+    handleUserNameInput(e) {
+        this.setState({userName: e.target.value});
+    }
+
+    //When password field changed
+    handlePassInput(e) {
+        this.setState({password: e.target.value});
+    }
+
+    handleRegister() {
+        if (this.state.registerFlag) {
+            this.setState({registerFlag: false});
+        } else if (!this.state.registerFlag) {
+            this.setState({registerFlag: true});
+        }
+    }
+
+    render() {                                          //prints LOGIN UI
+        if (this.state.isLoggedIn === false) {
+            return (
+                <div className="App">
+                    <header className="App-header">
+                        <p>Welcome to DoodleMath!</p>
+                    </header>
+                    <GustLogin
+                        username={this.state.userName}
+                        password={this.state.password}
+                        onUserChange={this.handleUserNameInput}
+                        onPassChange={this.handlePassInput}
+                        onClick={this.handleLoginClick}
+                        handleRegister={this.handleRegister}
+                    />
+                    {
+                        this.state.registerFlag && <Register/>
+                    }
+                </div>
+            );
+        } else {
+            return (
+                <div className="App">
+                    <header className="App-header">
+                        <p>Welcome to DoodleMath!</p>
+                    </header>
+                    <UserLogin grade={this.state.grade} role={this.state.userRole}/>
+                </div>
+            );
+        }
+    }
+}
+
+export default LoginControl;
