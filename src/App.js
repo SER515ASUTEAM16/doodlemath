@@ -175,7 +175,10 @@ class LoginControl extends React.Component {
             return (
                 <div className="App">
                     <header className="App-header">
-                        <p>Welcome to DoodleMath!</p>
+                        <span>
+                            <img src="logo.png" style={{height: "40px"}}></img>
+                            <span style={{position: 'absolute', top: '12px', marginLeft: '10px'}}>DoodleMath</span>
+                        </span>
                     </header>
                     <GustLogin
                         username={this.state.userName}
@@ -194,7 +197,10 @@ class LoginControl extends React.Component {
             return (
                 <div className="App">
                     <header className="App-header">
-                        <p>Welcome to DoodleMath!</p>
+                        <span>
+                            <img src="logo.png" style={{height: "40px"}}></img>
+                            <span style={{position: 'absolute', top: '12px', marginLeft: '10px'}}>DoodleMath</span>
+                        </span>
                     </header>
                     <UserLogin grade={this.state.grade} role={this.state.userRole}/>
                 </div>
