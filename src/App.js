@@ -22,7 +22,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import PendingAssignments from "./blocks/PendingAssignments";
-import StudentBar from "./blocks/StudentBar";
 
                                                                 //setting paths and routes, assigning buttons and values to them
 function UserLogin() {
@@ -33,7 +32,6 @@ function UserLogin() {
                 <Route path="/grade9-12" component={HigherGrade}/>
                 <Route path="/Advanced1" component={Advanced1}/>
                 <Route path="/PendingAssignments" component={PendingAssignments}/>
-                <Route path="/StudentBar" component={StudentBar}/>
                 <Link to="/grade1-5">
                     <button>Beginner</button>
                 </Link>
@@ -45,9 +43,6 @@ function UserLogin() {
                 </Link>
                 <Link to="/PendingAssignments">
                     <button>PendingAssi</button>
-                </Link>
-                <Link to="/StudentBar">
-                    <button>Student</button>
                 </Link>
             </Router>
         </div>
