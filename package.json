@@ -5,6 +5,8 @@
   "dependencies": {
     "@material-ui/core": "^4.6.1",
     "history": "^4.10.1",
+    "d3": "^3.5.17",
+    "function-plot": "^1.19.1",
     "material-ui": "^0.20.2",
     "react": "^16.9.0",
     "react-blockly": "^4.1.0",
