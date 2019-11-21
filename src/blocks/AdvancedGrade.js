@@ -93,7 +93,7 @@ const toolbox = `
             </category>
          </xml>`
 
-class Advanced1 extends React.Component {
+class AdvancedGrade extends React.Component {
     constructor() {
         super();
         this.state = {                                      //RESULT variable created
@@ -139,4 +139,4 @@ class Advanced1 extends React.Component {
     }
 }
 
-export default Advanced1;
+export default AdvancedGrade;
