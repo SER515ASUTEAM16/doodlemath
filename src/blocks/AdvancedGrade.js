@@ -91,6 +91,9 @@ const toolbox = `
                 <block type="math_single">                                  //UNARY OPERATORS added as a dropdown option
                 </block>
             </category>
+             <category name="Variables">
+                 <block type="graph_get_x"></block>
+             </category>
          </xml>`
 
 class AdvancedGrade extends React.Component {
@@ -98,22 +101,44 @@ class AdvancedGrade extends React.Component {
         super();
         this.state = {                                      //RESULT variable created
             result: "",
-            resultValue: ""
+            resultValue: "",
+            drawGraph: false
         };
     }
 
     componentDidMount() {
+        Blockly.defineBlocksWithJsonArray([{
+            "type": "graph_get_x",
+            "message0": "x",
+            "output": "Number",
+            "colour": Blockly.Msg['VARIABLES_HUE'],
+            "tooltip": Blockly.Msg['VARIABLES_GET_TOOLTIP'],
+            "helpUrl": Blockly.Msg['VARIABLES_GET_HELPURL']
+        }]);
+        Blockly.JavaScript['graph_get_x'] = function (block) {
+            // x variable getter.
+            return ['x', Blockly.JavaScript.ORDER_ATOMIC];
+        };
+
         Blockly.inject("blocklyDiv", {toolbox: toolbox});
+        Blockly.getMainWorkspace().addChangeListener(this.printResult);
+    }
+
+    renderGraph() {
+        if (this.state.drawGraph) {
+            return <div id="graph"></div>
+        }
     }
 
     render() {
+
         return (
             <div>
                 <div id="blocklyContainer" style={{display: 'inline'}}>
                     <div id="blocklyDiv" ref="blocklyDiv"                                   //RESULT is printed
-                         style={{height: '480px', width: '1000px', float: 'left'}}></div>
+                         style={{height: '480px', width: '900px', float: 'left'}}></div>
                     <div style={{height: '480px'}}>
-                        <button onClick={this.printResult}>
+                        <button>
                             Result
                         </button>
                         <div>
@@ -124,17 +149,55 @@ class AdvancedGrade extends React.Component {
                                 Result = {this.state.resultValue}
                             </p>
                         </div>
+                        {this.renderGraph()}
+
                     </div>
                 </div>
             </div>
         )
     }
-    printResult = () => {                                                   //RESULT is calculated
+
+    printResult = () => {
+        //RESULT is calculated
+        window.d3 = require('d3');
+        const functionPlot = require('function-plot');
         let workspace = Blockly.getMainWorkspace();
-        if (workspace.getAllBlocks().length > 0) {
-            let result = Blockly.JavaScript.workspaceToCode(Blockly.getMainWorkspace());
-            this.setState({result: result});
-            this.setState({resultValue: eval(result)});
+        let allBlocks = workspace.getAllBlocks();
+        this.setState({drawGraph: false});
+        this.setState({result: ""});
+        this.setState({resultValue: ""});
+        let drawGraph = false;
+        let count = 0;
+        if (allBlocks.length > 0) {
+            for (let i = 0; i < allBlocks.length; i++) {
+                if (allBlocks[i].type === 'graph_get_x') {
+                    drawGraph = true;
+                    count++;
+                }
+            }
+            let result = Blockly.JavaScript.workspaceToCode(workspace);
+            result = result.split(";");
+            console.log(result)
+            console.log(drawGraph)
+            if (drawGraph && result.length - count <= 2) {
+                try {
+                    this.setState({drawGraph: drawGraph});
+                    functionPlot({
+                        target: '#graph',
+                        width: 440,
+                        height: 350,
+                        data: [{
+                            fn: result[0].toString()
+                        }]
+                    })
+                } catch (e) {
+                    alert("Graph Not Supported");
+                }
+            }
+            this.setState({result: result[0]})
+            if (!drawGraph) {
+                this.setState({resultValue: eval(result[0])});
+            }
         }
     }
 }
