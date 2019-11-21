@@ -136,17 +136,17 @@ class AdvancedGrade extends React.Component {
             <div>
                 <div id="blocklyContainer" style={{display: 'inline'}}>
                     <div id="blocklyDiv" ref="blocklyDiv"                                   //RESULT is printed
-                         style={{height: '480px', width: '900px', float: 'left'}}></div>
+                         style={{height: '90vh', width: '900px', float: 'left'}}></div>
                     <div style={{height: '480px'}}>
-                        <button>
+                        <div style={{background: "#feecec78", paddingTop: '8px', paddingBottom: '8px'}}>
                             Result
-                        </button>
+                        </div>
                         <div>
                             <p>
                                 {this.state.result}
                             </p>
                             <p>
-                                Result = {this.state.resultValue}
+                                Result : {this.state.resultValue}
                             </p>
                         </div>
                         {this.renderGraph()}
@@ -184,7 +184,7 @@ class AdvancedGrade extends React.Component {
                     this.setState({drawGraph: drawGraph});
                     functionPlot({
                         target: '#graph',
-                        width: 440,
+                        width: 448,
                         height: 350,
                         data: [{
                             fn: result[0].toString()
@@ -196,7 +196,7 @@ class AdvancedGrade extends React.Component {
             }
             this.setState({result: result[0]})
             if (!drawGraph) {
-                this.setState({resultValue: eval(result[0])});
+                this.setState({resultValue: eval(result[0]).toString().toUpperCase()});
             }
         }
     }

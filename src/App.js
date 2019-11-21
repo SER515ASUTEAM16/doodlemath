@@ -175,31 +175,41 @@ class LoginControl extends React.Component {
             return (
                 <div className="App">
                     <header className="App-header">
-                        <p>Welcome to DoodleMath!</p>
+                        <span>
+                            <img src="logo.png" style={{height: "40px"}}></img>
+                            <span style={{position: 'absolute', top: '12px', marginLeft: '10px'}}>DoodleMath</span>
+                        </span>
                     </header>
-                    <GustLogin
-                        username={this.state.userName}
-                        password={this.state.password}
-                        onUserChange={this.handleUserNameInput}
-                        onPassChange={this.handlePassInput}
-                        onClick={this.handleLoginClick}
-                        handleRegister={this.handleRegister}
-                    />
-                    {
-                        this.state.registerFlag && <Register/>
-                    }
+                    {this.displayMenu()}
                 </div>
             );
         } else {
             return (
                 <div className="App">
                     <header className="App-header">
-                        <p>Welcome to DoodleMath!</p>
+                        <span>
+                            <img src="logo.png" style={{height: "40px"}}></img>
+                            <span style={{position: 'absolute', top: '12px', marginLeft: '10px'}}>DoodleMath</span>
+                        </span>
                     </header>
                     <UserLogin grade={this.state.grade} role={this.state.userRole}/>
                 </div>
             );
         }
+    }
+
+    displayMenu() {
+        if (this.state.registerFlag) {
+            return <Register handleRegister={this.handleRegister}/>
+        }
+        return <GustLogin
+            username={this.state.userName}
+            password={this.state.password}
+            onUserChange={this.handleUserNameInput}
+            onPassChange={this.handlePassInput}
+            onClick={this.handleLoginClick}
+            handleRegister={this.handleRegister}
+        />
     }
 }
 
