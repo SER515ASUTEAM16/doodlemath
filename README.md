@@ -7,11 +7,14 @@ App for learning Mathematics in a fun way.
 Make sure you have npm installed on your system. 
 Guild to install it can be found in [https://www.npmjs.com/get-npm](https://www.npmjs.com/get-npm)   
 
-## before npm start
+## One time step
 
-Go to the source directory of the project folder on command line/terminal and type: 'npm install'
+Go to the source directory of the project folder on command line/terminal and type: 
+### `npm install`
+this will install all the project dependencies to your system.
 
-
+## to run the client:
+Go to the source directory of the project folder on command line/terminal and type: 
 ### `npm start`
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
