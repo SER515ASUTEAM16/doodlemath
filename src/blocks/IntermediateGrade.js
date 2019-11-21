@@ -99,6 +99,7 @@ class IntermediateGrade extends React.Component {
 
     componentDidMount() {
         Blockly.inject("blocklyDiv", {toolbox: toolbox});
+        Blockly.getMainWorkspace().addChangeListener(this.printResult);
     }
 
     render() {
@@ -106,17 +107,17 @@ class IntermediateGrade extends React.Component {
             <div>
                 <div id="blocklyContainer" style={{display: 'inline'}}>
                     <div id="blocklyDiv" ref="blocklyDiv"                                   //RESULT is printed
-                         style={{height: '480px', width: '1000px', float: 'left'}}></div>
+                         style={{height: '90vh', width: '900px', float: 'left'}}></div>
                     <div style={{height: '480px'}}>
-                        <button onClick={this.printResult}>
+                        <div style={{background: "#feecec78", paddingTop: '8px', paddingBottom: '8px'}}>
                             Result
-                        </button>
+                        </div>
                         <div>
                             <p>
                                 {this.state.result}
                             </p>
                             <p>
-                                Result = {this.state.resultValue}
+                                Result : {this.state.resultValue}
                             </p>
                         </div>
                     </div>
