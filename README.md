@@ -34,3 +34,8 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
+
+
+###Libraries Used:
+Google Blockly React Wrapper: https://github.com/nbudin/react-blockly
+Logo taken from: Icons8 - https://icons8.com/
