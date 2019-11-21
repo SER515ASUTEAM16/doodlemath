@@ -3,7 +3,7 @@
   "name": "Portal to teach math",
   "icons": [
     {
-      "src": "logo.png",
+      "src": "logo.png"
     }
   ],
   "start_url": ".",
