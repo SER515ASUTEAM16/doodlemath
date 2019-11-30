@@ -176,7 +176,7 @@ class LoginControl extends React.Component {
                 <div className="App">
                     <header className="App-header">
                         <span>
-                            <img src="logo.png" style={{height: "40px"}}></img>
+                            <img src="logo.png" style={{height: "40px"}}/>
                             <span style={{position: 'absolute', top: '12px', marginLeft: '10px'}}>DoodleMath</span>
                         </span>
                     </header>
@@ -188,7 +188,7 @@ class LoginControl extends React.Component {
                 <div className="App">
                     <header className="App-header">
                         <span>
-                            <img src="logo.png" style={{height: "40px"}}></img>
+                            <img src="logo.png" style={{height: "40px"}}/>
                             <span style={{position: 'absolute', top: '12px', marginLeft: '10px'}}>DoodleMath</span>
                         </span>
                     </header>

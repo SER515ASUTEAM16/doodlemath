@@ -13,6 +13,10 @@
 
 import React from 'react'
 import Blockly from 'blockly'
+import TextareaAutosize from "@material-ui/core/TextareaAutosize";
+import TextField from "@material-ui/core/TextField";
+import RaisedButton from "material-ui/RaisedButton";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const toolbox = `
          <xml>
@@ -202,25 +206,25 @@ class LowerGrade extends React.Component {
 
     render() {
         return (
-            <div>
-                <div id="blocklyContainer" style={{display: 'inline'}}>
-                    <div id="blocklyDiv" ref="blocklyDiv"                                   //RESULT is printed
-                         style={{height: '90vh', width: '900px', float: 'left'}}></div>
-                    <div style={{height: '480px'}}>
-                        <div style={{background: "#feecec78", paddingTop: '8px', paddingBottom: '8px'}}>
-                            Result
-                        </div>
-                        <div>
-                            <p>
-                                {this.state.result}
-                            </p>
-                            <p>
-                                Result : {this.state.resultValue}
-                            </p>
+            <MuiThemeProvider>
+                <div>
+                    <TextareaAutosize style={{margin:10, width: 450, height: 100}} rows={3} id="questions"
+                                      aria-label="empty textarea" placeholder="Assignment Question" readOnly="true"/>
+                    <div id="blocklyContainer" style={{display: 'inline'}}>
+                        <div id="blocklyDiv" ref="blocklyDiv"                                   //RESULT is printed
+                             style={{height: '90vh', width: '900px', float: 'left'}}/>
+                        <div style={{height: '480px'}}>
+                            <div style={{background: "#feecec78", paddingTop: '8px', paddingBottom: '8px'}}>Result</div>
+                            <div>
+                                <p>{this.state.result}</p>
+                                <p>Result : {this.state.resultValue}</p>
+                            </div>
+                            <TextField id="answer" label="Enter answer" variant="outlined"/>
+                            <RaisedButton style={{margin:10}}>Submit</RaisedButton>
                         </div>
                     </div>
                 </div>
-            </div>
+            </MuiThemeProvider>
         )
     }
 

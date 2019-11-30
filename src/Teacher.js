@@ -13,6 +13,7 @@
 //Teacher class
 
 import React from 'react'
+import RaisedButton from "material-ui/RaisedButton";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import {
     Table,
@@ -29,25 +30,62 @@ class Teacher extends React.Component {
 
     constructor(props) {
         super(props);
+        this.handleQuestionInput = this.handleQuestionInput.bind(this);
+
         this.state = {                                      //Student List variable created
-            students: []
+            //students: []
+            title: '',
+            question: '',
+            questions: '',
+            dueDate: '',
+            grade: '',
+            author: ''
         };
     }
 
-    componentDidMount() {
-        fetch('http://localhost:8080/teacher/getAllStudentsInGrade/1-5')
-            .then(r => r.json())
-            .then((data) => {
-                this.setState({students: data})
-            })
-    }
+    /*
+        componentDidMount() {
+            fetch('http://localhost:8080/teacher/getAllStudentsInGrade/1-5')
+                .then(r => r.json())
+                .then((data) => {
+                    this.setState({students: data})
+                })
+        }
+    */
 
 
     render() {
         return (
             <div class="teacher">
-                <h3 align="left">Students in grade: </h3>
                 <MuiThemeProvider>
+                    <h3 style={{margin: 10}} align="left">Create new assignment:</h3>
+                    <div align='left'>
+                        <TextField
+                            id="outlined-textarea"
+                            label="Title"
+                            placeholder="Title of the assignment"
+                            margin="normal"
+                            variant="outlined"
+                            style={assignmentCreation}
+                        /><br/>
+                        <TextField
+                            id="outlined-textarea"
+                            label="Enter question"
+                            placeholder="Enter question followed by answer"
+                            margin="normal"
+                            variant="outlined"
+                            rows="5"
+                            style={assignmentCreation}
+                            onChange={this.handleQuestionInput}
+                        /><br/>
+                        <RaisedButton style={{margin: 10}} onClick={this.updateQuestions}>Add</RaisedButton>
+                        <RaisedButton style={{margin: 10}}>Submit</RaisedButton>
+                    </div>
+
+
+                    {/*
+                    <h3 align="left">Students in grade: </h3>
+
                     <div style={tableStyle}>
                         <Table>
                             <TableHeader editable="true">
@@ -69,35 +107,21 @@ class Teacher extends React.Component {
                                 ))}
                             </TableBody>
                         </Table>
-                    </div>
+                    </div>*/}
                 </MuiThemeProvider>
-
-                <h3 align="left">Create new assignment:</h3>
-                <div>
-                    <TextField
-                        id="outlined-textarea"
-                        label="Title"
-                        placeholder="Title of the assignment"
-                        multiline
-                        margin="normal"
-                        variant="outlined"
-                        style={assignmentCreation}
-                    />
-                    <br/>
-                    <TextField
-                        id="outlined-textarea"
-                        label="Description"
-                        placeholder="Description of the assignment"
-                        multiline
-                        margin="normal"
-                        variant="outlined"
-                        rows="5"
-                        style={assignmentCreation}
-                    />
-                </div>
             </div>
-
         )
+    }
+
+    handleQuestionInput(e) {
+        this.setState({question: e.target.value});
+    }
+
+    updateQuestions() {
+        let tmp = this.state.questions + this.state.question;
+        this.setState({
+            questions: tmp
+        })
     }
 }
 
@@ -111,7 +135,7 @@ const tableStyle = {
 const assignmentCreation = {
     margin: '10px',
     border: '2px',
-    width: '50%'
+    width: '30%'
 };
 
 export default Teacher;
