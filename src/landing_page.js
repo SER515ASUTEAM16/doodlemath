@@ -7,7 +7,7 @@
 ;==================================================================================
  */
 
-//Teacher class
+//landing page class
 
 import React from 'react'
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
@@ -22,12 +22,12 @@ import {
 import TextField from '@material-ui/core/TextField';
 
 
-class Teacher extends React.Component {
+class landing_page extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {                                      //Student List variable created
-            students: []
+            assignments: []
         };
     }
 
@@ -35,28 +35,27 @@ class Teacher extends React.Component {
         fetch('http://localhost:8080/teacher/getAllStudentsInGrade/1-5')
             .then(r => r.json())
             .then((data) => {
-                this.setState({students: data})
+                this.setState({assignments: data})
             })
     }
 
 
     render() {
         return (
-            <div class="teacher">
+            <div class="landing_page">
                 <h3 align="left">Students in grade: </h3>
                 <MuiThemeProvider>
                     <div style={tableStyle}>
                         <Table>
-                            <TableHeader editable="true">
+                            <TableHeader editable="false">
                                 <TableRow>
-                                    <TableHeaderColumn align="center">ID</TableHeaderColumn>
-                                    <TableHeaderColumn align="center">Name</TableHeaderColumn>
-                                    <TableHeaderColumn align="center">Email</TableHeaderColumn>
-                                    <TableHeaderColumn align="center">Grade</TableHeaderColumn>
+                                    <TableHeaderColumn align="center">Assignment Number</TableHeaderColumn>
+                                    <TableHeaderColumn align="center">Due Date</TableHeaderColumn>
+                                    <TableHeaderColumn align="center">Status</TableHeaderColumn>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                {this.state.students.map(data => (
+                                {this.state.assignments.map(data => (
                                     <TableRow key={data.id}>
                                         <TableRowColumn align="center">{data.id}</TableRowColumn>
                                         <TableRowColumn align="center">{data.name}</TableRowColumn>
@@ -111,4 +110,4 @@ const assignmentCreation = {
     width: '50%'
 };
 
-export default Teacher;
+export default landing_page;

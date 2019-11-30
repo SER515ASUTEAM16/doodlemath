@@ -31,12 +31,12 @@ function UserLogin(props) {
         return (<Teacher grade={props.grade} author={props.name}/>)
     } else if (props.role === "student") {
         if (props.grade === "1-5") {
-            return (<LowerGrade/>)
+            return (<landing_page/>)
         } else if (props.grade === "6-8") {
-            return (<IntermediateGrade/>)
+            return (<landing_page/>)
         }
         if (props.grade === "9-12") {
-            return (<AdvancedGrade/>)
+            return (<landing_page/>)
         } else {
             return (<h1>Invalid grade</h1>)
         }
@@ -105,7 +105,6 @@ class LoginControl extends React.Component {
                 email: this.state.userName,
                 password: this.state.password
             };
-
             fetch('http://localhost:8080/auth/loginByEmail', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
