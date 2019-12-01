@@ -195,7 +195,7 @@ class LowerGrade extends React.Component {
         super();
         this.state = {                                                      //RESULT variable created
             result: "",
-            resultValue: ""
+                resultValue: ""
         };
     }
 
