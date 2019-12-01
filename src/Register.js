@@ -16,6 +16,12 @@ import React, {Component} from 'react'
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 class Register extends Component {
 
@@ -114,6 +120,16 @@ class Register extends Component {
                         hintText="Role"
                         floatingLabelText="Role(student / teacher)"
                     />
+                    <br/>
+                    <br/>
+                    <FormControl component="Fieldset">
+                    <FormLabel component="legend">Grade</FormLabel>
+                    <RadioGroup>
+                        <FormControlLabel value="Beginner" control={<Radio />} label="Beginner (Grade 1-4)" />
+                        <FormControlLabel value="Intermediate" control={<Radio />} label="Intermediate (Grade 5-8)" />
+                        <FormControlLabel value="Advanced" control={<Radio />} label="Advanced (Grade 9-12)" />
+                    </RadioGroup>
+                    </FormControl>
                     <br/>
                     <TextField
                         value={this.state.grade}
