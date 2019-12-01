@@ -158,7 +158,7 @@ class Teacher extends React.Component {
         fetch('http://localhost:8080/teacher/createAssignment', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(assignment)te
+            body: JSON.stringify(assignment)
 
         }).then(r => {r.json()
             if (r.status == 200) {
