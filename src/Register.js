@@ -122,13 +122,12 @@ class Register extends Component {
                     />
                     <br/>
                     <br/>
-                    <FormControl component="Fieldset">
-                    <FormLabel component="legend">Grade</FormLabel>
-                    <RadioGroup>
-                        <FormControlLabel value="Beginner" control={<Radio />} label="Beginner (Grade 1-4)" />
-                        <FormControlLabel value="Intermediate" control={<Radio />} label="Intermediate (Grade 5-8)" />
-                        <FormControlLabel value="Advanced" control={<Radio />} label="Advanced (Grade 9-12)" />
-                    </RadioGroup>
+                    <FormControl component="fieldset">
+                        <FormLabel component="legend">Role</FormLabel>
+                        <RadioGroup>
+                            <FormControlLabel value="Student" control={<Radio />} label="Student" />
+                            <FormControlLabel value="Teacher" control={<Radio />} label="Teacher" />
+                        </RadioGroup>
                     </FormControl>
                     <br/>
                     <TextField
@@ -138,9 +137,22 @@ class Register extends Component {
                         floatingLabelText="Enter your Grade(1-5 / 6-8 / 9-12)"
                     />
                     <br/>
+                    <br/>
+                    <br/>
+                    <FormControl component="legend">
+                        <FormLabel component="legend">Grade</FormLabel>
+                        <RadioGroup>
+                            <FormControlLabel value="1-5" control={<Radio />} label="Beginner (Grade 1-5)" />
+                            <FormControlLabel value="6-8" control={<Radio />} label="Intermediate (Grade 5-8)" />
+                            <FormControlLabel value="9-12" control={<Radio />} label="Advanced (Grade 9-12)" />
+                        </RadioGroup>
+                    </FormControl>
+                    <br/>
+                    <br/>
                     <RaisedButton inputs={this.state} label="Register" primary={true} onClick={this.registerUser}/>
                     <br/>
                     <br/>
+
                     <RaisedButton label="Already a member" primary={true} onClick={this.props.handleRegister}/>
                 </div>
             </MuiThemeProvider>
