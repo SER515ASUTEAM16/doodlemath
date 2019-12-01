@@ -22,17 +22,18 @@ import {
 import TextField from '@material-ui/core/TextField';
 
 
-class landing_page extends React.Component {
+class Assignment_list extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {                                      //Student List variable created
-            assignments: []
+        this.state = {
+            assignments: [],
+            user: props.name
         };
     }
 
     componentDidMount() {
-        fetch('http://localhost:8080/teacher/getAllStudentsInGrade/1-5')
+        fetch('http://localhost:8080/student/ccmcbc/getAssignments')
             .then(r => r.json())
             .then((data) => {
                 this.setState({assignments: data})
@@ -43,13 +44,13 @@ class landing_page extends React.Component {
     render() {
         return (
             <div class="landing_page">
-                <h3 align="left">Students in grade: </h3>
+                <h3 align="left">assignments: </h3>
                 <MuiThemeProvider>
                     <div style={tableStyle}>
                         <Table>
                             <TableHeader editable="false">
                                 <TableRow>
-                                    <TableHeaderColumn align="center">Assignment Number</TableHeaderColumn>
+                                    <TableHeaderColumn align="center">Assignment Name</TableHeaderColumn>
                                     <TableHeaderColumn align="center">Due Date</TableHeaderColumn>
                                     <TableHeaderColumn align="center">Status</TableHeaderColumn>
                                 </TableRow>
@@ -57,10 +58,9 @@ class landing_page extends React.Component {
                             <TableBody>
                                 {this.state.assignments.map(data => (
                                     <TableRow key={data.id}>
-                                        <TableRowColumn align="center">{data.id}</TableRowColumn>
-                                        <TableRowColumn align="center">{data.name}</TableRowColumn>
-                                        <TableRowColumn align="center">{data.email}</TableRowColumn>
-                                        <TableRowColumn align="center">{data.grade}</TableRowColumn>
+                                        <TableRowColumn align="center">{data.title}</TableRowColumn>
+                                        <TableRowColumn align="center">{data.dueDate}</TableRowColumn>
+                                        <TableRowColumn align="center">{data.result}</TableRowColumn>
                                     </TableRow>
                                 ))}
                             </TableBody>
@@ -68,29 +68,6 @@ class landing_page extends React.Component {
                     </div>
                 </MuiThemeProvider>
 
-                <h3 align="left">Create new assignment:</h3>
-                <div>
-                    <TextField
-                        id="outlined-textarea"
-                        label="Title"
-                        placeholder="Title of the assignment"
-                        multiline
-                        margin="normal"
-                        variant="outlined"
-                        style={assignmentCreation}
-                    />
-                    <br/>
-                    <TextField
-                        id="outlined-textarea"
-                        label="Description"
-                        placeholder="Description of the assignment"
-                        multiline
-                        margin="normal"
-                        variant="outlined"
-                        rows="5"
-                        style={assignmentCreation}
-                    />
-                </div>
             </div>
 
         )
@@ -110,4 +87,4 @@ const assignmentCreation = {
     width: '50%'
 };
 
-export default landing_page;
+export default Assignment_list;
