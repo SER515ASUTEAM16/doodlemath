@@ -22,43 +22,53 @@ import {
 import TextField from '@material-ui/core/TextField';
 
 
-class Assignment_list extends React.Component {
+class Teacher_assignments extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             assignments: [],
-            user: props.name
+            user: props.name,
+            role: props.userRole
         };
     }
 
     componentDidMount() {
-        fetch('http://localhost:8080/student/ccmcbc/getAssignments')
-            .then(r => r.json())
-            .then((data) => {
-                this.setState({assignments: data})
-            })
+        if(this.state.role=='Student') {
+            fetch('http://localhost:8080/student/ccmcbc/getAssignments')
+                .then(r => r.json())
+                .then((data) => {
+                    this.setState({assignments: data})
+                })
+        }
+        else if(this.state.role=='Teacher'){
+            fetch('http://localhost:8080/teacher/getAssignments')
+                .then(r => r.json())
+                .then((data) => {
+                    this.setState({assignments: data})
+                })
+            }
     }
 
     render() {
         return (
-            <div class="Assignment_list">
-                <h3 align="left">assignments: </h3>
+            <div class="Teacher_assignments">
+                <h3 align="left">Created Assignments: </h3>
                 <MuiThemeProvider>
                     <div style={tableStyle}>
                         <Table>
                             <TableHeader editable="false">
                                 <TableRow>
-                                    <TableHeaderColumn align="center">Assignment Name</TableHeaderColumn>
-                                    <TableHeaderColumn align="center">Due Date</TableHeaderColumn>
-                                    <TableHeaderColumn align="center">Status</TableHeaderColumn>
+                                    <TableHeaderColumn align="center">Assignment Title</TableHeaderColumn>
+                                    <TableHeaderColumn align="center">Description</TableHeaderColumn>
+                                    <TableHeaderColumn align="center">Result</TableHeaderColumn>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
                                 {this.state.assignments.map(data => (
                                     <TableRow key={data.id}>
                                         <TableRowColumn align="center">{data.title}</TableRowColumn>
-                                        <TableRowColumn align="center">{data.dueDate}</TableRowColumn>
+                                        <TableRowColumn align="center">{data.description}</TableRowColumn>
                                         <TableRowColumn align="center">{data.result}</TableRowColumn>
                                     </TableRow>
                                 ))}
@@ -84,4 +94,4 @@ const assignmentCreation = {
     width: '50%'
 };
 
-export default Assignment_list;
+export default Teacher_assignments;

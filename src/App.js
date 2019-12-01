@@ -22,16 +22,18 @@ import TextField from 'material-ui/TextField';
 import Teacher from "./Teacher";
 import Register from "./Register";
 import Assignment_list from "./Assignment_list";
+import Teacher_assignments from "./Teacher_assignments";
 //setting paths and routes, assigning buttons and values to them
 
 
 function UserLogin(props) {
 
     if (props.role === "teacher") {
-        return (<Teacher grade={props.grade} author={props.name}/>)
+        // return (<Teacher grade={props.grade} author={props.name}/>)
+        return (<Teacher_assignments/>)
     } else if (props.role === "student") {
         if (props.grade === "1-5") {
-            return (<Assignment_list name={props.name}/>)
+            return (<Assignment_list name={props.name} role={props.userRole}/>)
         } else if (props.grade === "6-8") {
             return (<Assignment_list name={props.name} />)
         }
