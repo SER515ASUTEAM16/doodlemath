@@ -2,6 +2,7 @@
 ; Title:   Doodlemath BY TEAM 16
 ; Authors:
            Amit Pandey         (apande36)    Mail:apande36@asu.edu
+           Lokesh Sharma       (lsharma6)    Mail:lsharma6@asu.edu
 
 ;Version:  Version 1.1
 ;==================================================================================
@@ -20,6 +21,7 @@ import {
     TableRowColumn,
 } from 'material-ui/Table';
 import TextField from '@material-ui/core/TextField';
+import Button from "@material-ui/core/Button";
 
 
 class Teacher_assignments extends React.Component {
@@ -28,32 +30,22 @@ class Teacher_assignments extends React.Component {
         super(props);
         this.state = {
             assignments: [],
-            user: props.name,
-            role: props.userRole
+            user: props.name
         };
     }
 
     componentDidMount() {
-        if(this.state.role=='Student') {
-            fetch('http://localhost:8080/student/ccmcbc/getAssignments')
-                .then(r => r.json())
-                .then((data) => {
-                    this.setState({assignments: data})
-                })
-        }
-        else if(this.state.role=='Teacher'){
-            fetch('http://localhost:8080/teacher/getAssignments')
-                .then(r => r.json())
-                .then((data) => {
-                    this.setState({assignments: data})
-                })
-            }
+        fetch('http://localhost:8080/teacher/getAssignments/' + this.state.user)
+            .then(r => r.json())
+            .then((data) => {
+                this.setState({assignments: data})
+            })
     }
 
     render() {
         return (
             <div class="Teacher_assignments">
-                <h3 align="left">Created Assignments: </h3>
+                <h3 align="left">Assignments:</h3>
                 <MuiThemeProvider>
                     <div style={tableStyle}>
                         <Table>
@@ -69,7 +61,11 @@ class Teacher_assignments extends React.Component {
                                     <TableRow key={data.id}>
                                         <TableRowColumn align="center">{data.title}</TableRowColumn>
                                         <TableRowColumn align="center">{data.description}</TableRowColumn>
-                                        <TableRowColumn align="center">{data.result}</TableRowColumn>
+                                        <TableRowColumn align="center">
+                                            <Button variant="contained" color="primary" value={data.id} onClick={this.loadAssignment}>
+                                                Open
+                                            </Button>
+                                        </TableRowColumn>
                                     </TableRow>
                                 ))}
                             </TableBody>
@@ -79,6 +75,10 @@ class Teacher_assignments extends React.Component {
 
             </div>
         )
+    }
+
+    loadAssignment(e) {
+        console.log(e.target.value);
     }
 }
 

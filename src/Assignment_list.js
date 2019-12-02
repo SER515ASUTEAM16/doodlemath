@@ -2,6 +2,7 @@
 ; Title:   Doodlemath BY TEAM 16
 ; Authors:
            Amit Pandey         (apande36)    Mail:apande36@asu.edu
+           Lokesh Sharma       (lsharma6)    Mail:lsharma6@asu.edu
 
 ;Version:  Version 1.1
 ;==================================================================================
@@ -20,6 +21,7 @@ import {
     TableRowColumn,
 } from 'material-ui/Table';
 import TextField from '@material-ui/core/TextField';
+import Button from "@material-ui/core/Button";
 
 
 class Assignment_list extends React.Component {
@@ -33,11 +35,15 @@ class Assignment_list extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8080/student/ccmcbc/getAssignments')
+        fetch('http://localhost:8080/student/'+ this.state.user +'/getAssignments')
             .then(r => r.json())
             .then((data) => {
                 this.setState({assignments: data})
             })
+    }
+
+    loadAssignment(e) {
+        console.log(e.target.value);
     }
 
     render() {
@@ -59,7 +65,11 @@ class Assignment_list extends React.Component {
                                     <TableRow key={data.id}>
                                         <TableRowColumn align="center">{data.title}</TableRowColumn>
                                         <TableRowColumn align="center">{data.dueDate}</TableRowColumn>
-                                        <TableRowColumn align="center">{data.result}</TableRowColumn>
+                                        <TableRowColumn align="center">
+                                            <Button variant="contained" color="primary" value={data.id} onClick={this.loadAssignment}>
+                                                Open
+                                            </Button>
+                                        </TableRowColumn>
                                     </TableRow>
                                 ))}
                             </TableBody>

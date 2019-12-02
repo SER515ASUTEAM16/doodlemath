@@ -30,7 +30,7 @@ function UserLogin(props) {
 
     if (props.role === "teacher") {
         // return (<Teacher grade={props.grade} author={props.name}/>)
-        return (<Teacher_assignments/>)
+        return (<Teacher_assignments name={props.name} />)
     } else if (props.role === "student") {
         if (props.grade === "1-5") {
             return (<Assignment_list name={props.name} role={props.userRole}/>)
