@@ -193,23 +193,43 @@ const toolbox = `
 class LowerGrade extends React.Component {
     constructor() {
         super();
+        this.nextQuestion = this.nextQuestion.bind(this);
+        this.handleResult = this.handleResult.bind(this);
+
         this.state = {                                                      //RESULT variable created
             result: "",
-                resultValue: ""
+            resultValue: "",
+            assignment: [],
+            answers: [],
+            count: 0,
+            score: 0,
+            answer: "",
+            resultValue: ""
         };
     }
 
     componentDidMount() {
         Blockly.inject("blocklyDiv", {toolbox: toolbox});
         Blockly.getMainWorkspace().addChangeListener(this.printResult);
+
+
+        fetch('http://localhost:8080/student/assignment/45')
+            .then(r => r.json())
+            .then((data) => {
+                this.setState({
+                    assignment: data.description.split(";"),
+                    answers: data.solution.split(";")
+                })
+            })
     }
 
     render() {
         return (
             <MuiThemeProvider>
                 <div>
-                    <TextareaAutosize style={{margin:10, width: 450, height: 100}} rows={3} id="questions"
-                                      aria-label="empty textarea" placeholder="Assignment Question" readOnly="true"/>
+                    <TextareaAutosize style={{margin:5, fontSize: 26, textAlign:"center", paddingTop: 15 , width: 450, height: 70}} id="questions"
+                                      aria-label="empty textarea" value={this.state.assignment[this.state.count]}
+                                      readOnly="true"/>
                     <div id="blocklyContainer" style={{display: 'inline'}}>
                         <div id="blocklyDiv" ref="blocklyDiv"                                   //RESULT is printed
                              style={{height: '90vh', width: '900px', float: 'left'}}/>
@@ -219,14 +239,40 @@ class LowerGrade extends React.Component {
                                 <p>{this.state.result}</p>
                                 <p>Result : {this.state.resultValue}</p>
                             </div>
-                            <TextField id="answer" label="Enter answer" variant="outlined"/>
-                            <RaisedButton style={{margin:10}}>Submit</RaisedButton>
+                            <TextField style={{margin:5, width:320}} onChange={this.handleResult} id="answer" label="Enter answer"
+                                       variant="outlined"/>
+                            <TextField style={{margin:5, width:80}} value={this.state.score} readOnly={true} id="score" label="Score"
+                                       variant="outlined"/>
+                            <RaisedButton onClick={this.nextQuestion} style={{margin: 10}}>Submit</RaisedButton>
                         </div>
                     </div>
                 </div>
             </MuiThemeProvider>
         )
     }
+
+    nextQuestion() {
+        if (this.state.answers[this.state.count] === this.state.answer) {
+            this.setState({
+                score: this.state.score + 1
+            })
+        }
+        if (this.state.count < this.state.assignment.length) {
+            this.setState({
+                count: this.state.count + 1,
+                answer: ""
+            })
+        }
+
+    }
+
+    handleResult(e) {
+        this.setState({
+            answer: e.target.value
+        });
+
+    }
+
 
     printResult = () => {                                                               //RESULT is calculated
         let workspace = Blockly.getMainWorkspace();
@@ -236,6 +282,7 @@ class LowerGrade extends React.Component {
             this.setState({resultValue: eval(result)});
         }
     }
+
 }
 
 export default LowerGrade;
