@@ -12,6 +12,7 @@
 
 import React from 'react'
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import RaisedButton from 'material-ui/RaisedButton';
 import {
     Table,
     TableBody,
@@ -20,17 +21,23 @@ import {
     TableRow,
     TableRowColumn,
 } from 'material-ui/Table';
-import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";
+import Teacher from "./Teacher";
 
 
 class Teacher_assignments extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.loadAssignment = this.loadAssignment.bind(this);
+        this.loadCreateAssign = this.loadCreateAssign.bind(this);
+
         this.state = {
             assignments: [],
-            user: props.name
+            user: props.name,
+            openFlag: false,
+            createFlag: false
         };
     }
 
@@ -43,43 +50,69 @@ class Teacher_assignments extends React.Component {
     }
 
     render() {
-        return (
-            <div class="Teacher_assignments">
-                <h3 align="left">Assignments:</h3>
-                <MuiThemeProvider>
-                    <div style={tableStyle}>
-                        <Table>
-                            <TableHeader editable="false">
-                                <TableRow>
-                                    <TableHeaderColumn align="center">Assignment Title</TableHeaderColumn>
-                                    <TableHeaderColumn align="center">Description</TableHeaderColumn>
-                                    <TableHeaderColumn align="center">Result</TableHeaderColumn>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                {this.state.assignments.map(data => (
-                                    <TableRow key={data.id}>
-                                        <TableRowColumn align="center">{data.title}</TableRowColumn>
-                                        <TableRowColumn align="center">{data.description}</TableRowColumn>
-                                        <TableRowColumn align="center">
-                                            <Button variant="contained" color="primary" value={data.id} onClick={this.loadAssignment}>
-                                                Open
-                                            </Button>
-                                        </TableRowColumn>
+        if (!this.state.openFlag && !this.state.createFlag) {
+            return (
+                <div class="Teacher_assignments">
+                    <h3 align="left">Assignments:</h3>
+                    <MuiThemeProvider>
+                        <RaisedButton fullWidth={50} variant="contained" color="primary"
+                                      onClick={this.loadCreateAssign}>
+                            Create New Assignment
+                        </RaisedButton>
+                        <div style={tableStyle}>
+                            <Table>
+                                <TableHeader displaySelectAll={false} adjustForCheckbox={false} editable="false">
+                                    <TableRow>
+                                        <TableHeaderColumn align="center">Assignment Title</TableHeaderColumn>
+                                        <TableHeaderColumn align="center">Description</TableHeaderColumn>
+                                        <TableHeaderColumn align="center">View Submissions</TableHeaderColumn>
                                     </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </div>
-                </MuiThemeProvider>
-
-            </div>
-        )
+                                </TableHeader>
+                                <TableBody displayRowCheckbox={false}>
+                                    {this.state.assignments.map(data => (
+                                        <TableRow key={data.id} value={data.id} onClick={this.loadAssignment}>
+                                            <TableRowColumn align="center">{data.title}</TableRowColumn>
+                                            <TableRowColumn align="center">{data.description}</TableRowColumn>
+                                            <TableRowColumn align="center">
+                                                <RaisedButton variant="contained" color="primary"
+                                                              value={data.id} onClick={this.loadAssignment}>
+                                                    Open
+                                                </RaisedButton>
+                                            </TableRowColumn>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </div>
+                    </MuiThemeProvider>
+                </div>
+            )
+        } else if (this.state.createFlag) {
+            return (
+                <Teacher grade={this.props.grade} author={this.state.user}/>
+            )
+        } else {
+            return (
+                <h3>Needed API to display assignment details by user</h3>
+            )
+        }
     }
 
     loadAssignment(e) {
-        console.log(e.target.value);
+        this.setState({
+            openFlag: true,
+            createFlag: false
+        })
     }
+
+    loadCreateAssign(e) {
+        console.log("Hey")
+        this.setState({
+            openFlag: false,
+            createFlag: true
+        })
+    }
+
 }
 
 const tableStyle = {
@@ -88,10 +121,9 @@ const tableStyle = {
     border: '2px solid black'
 };
 
-const assignmentCreation = {
-    margin: '10px',
-    border: '2px',
-    width: '50%'
+const btnStyle = {
+    justifyContent: 'center',
+    align: 'right'
 };
 
 export default Teacher_assignments;

@@ -6,7 +6,7 @@
            Lokesh Sharma       (lsharma6)    Mail:lsharma6@asu.edu
            Vineeth Chitteti    (vchittet)    Mail:vchittet@asu.edu
 
-;Version:  Version 1.1 
+;Version:  Version 1.1
 ;==================================================================================
  */
 
@@ -45,6 +45,15 @@ class Teacher extends React.Component {
             author: props.author
         };
     }
+
+/*    componentDidMount() {
+        fetch('API to load students who submitted the assignment NEEDED!!!')
+            .then(r => r.json())
+            .then((data) => {
+                this.setState({
+                })
+            })
+    }*/
 
 
     render() {
