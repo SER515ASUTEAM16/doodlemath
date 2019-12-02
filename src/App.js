@@ -21,22 +21,24 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Teacher from "./Teacher";
 import Register from "./Register";
-
+import Assignment_list from "./Assignment_list";
+import Teacher_assignments from "./Teacher_assignments";
 //setting paths and routes, assigning buttons and values to them
 
 
 function UserLogin(props) {
 
     if (props.role === "teacher") {
-        return (<Teacher grade={props.grade} author={props.name}/>)
+        // return (<Teacher grade={props.grade} author={props.name}/>)
+        return (<Teacher_assignments name={props.name} />)
     } else if (props.role === "student") {
         if (props.grade === "1-5") {
-            return (<LowerGrade/>)
+            return (<Assignment_list name={props.name} role={props.userRole}/>)
         } else if (props.grade === "6-8") {
-            return (<IntermediateGrade/>)
+            return (<Assignment_list name={props.name} />)
         }
         if (props.grade === "9-12") {
-            return (<AdvancedGrade/>)
+            return (<Assignment_list name={props.name}/>)
         } else {
             return (<h1>Invalid grade</h1>)
         }
@@ -105,7 +107,6 @@ class LoginControl extends React.Component {
                 email: this.state.userName,
                 password: this.state.password
             };
-
             fetch('http://localhost:8080/auth/loginByEmail', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
@@ -192,7 +193,7 @@ class LoginControl extends React.Component {
                             <span style={{position: 'absolute', top: '12px', marginLeft: '10px'}}>DoodleMath</span>
                         </span>
                     </header>
-                    <UserLogin grade={this.state.grade} name={this.state.userName} role={this.state.userRole}/>
+                    <UserLogin name={this.state.userName} grade={this.state.grade} role={this.state.userRole}/>
                 </div>
             );
         }
