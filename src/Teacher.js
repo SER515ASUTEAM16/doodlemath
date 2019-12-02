@@ -31,33 +31,44 @@ class Teacher extends React.Component {
     constructor(props) {
         super(props);
         this.handleQuestionInput = this.handleQuestionInput.bind(this);
-
+        this.handleSolutionInput = this.handleSolutionInput.bind(this);
+        this.handleTitle = this.handleTitle.bind(this);
+        this.updateQuestions = this.updateQuestions.bind(this);
+        this.createAssignment = this.createAssignment.bind(this);
         this.state = {                                      //Student List variable created
-            //students: []
             title: '',
             question: '',
-            questions: '',
+            solution: '',
+            questions: [],
             dueDate: '',
-            grade: '',
-            author: ''
+            grade: props.grade,
+            author: props.author
         };
     }
-
-    /*
-        componentDidMount() {
-            fetch('http://localhost:8080/teacher/getAllStudentsInGrade/1-5')
-                .then(r => r.json())
-                .then((data) => {
-                    this.setState({students: data})
-                })
-        }
-    */
 
 
     render() {
         return (
+
             <div class="teacher">
                 <MuiThemeProvider>
+                    <Table>
+                        <TableHeader editable="true">
+                            <TableRow>
+                                <TableHeaderColumn align="center">Questions</TableHeaderColumn>
+                                <TableHeaderColumn align="center">Result</TableHeaderColumn>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {this.state.questions.map((data) => (
+                                <TableRow>
+                                    <TableRowColumn align="center">{data.question}</TableRowColumn>
+                                    <TableRowColumn align="center">{data.solution}</TableRowColumn>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+
                     <h3 style={{margin: 10}} align="left">Create new assignment:</h3>
                     <div align='left'>
                         <TextField
@@ -67,6 +78,7 @@ class Teacher extends React.Component {
                             margin="normal"
                             variant="outlined"
                             style={assignmentCreation}
+                            onChange={this.handleTitle}
                         /><br/>
                         <TextField
                             id="outlined-textarea"
@@ -76,52 +88,85 @@ class Teacher extends React.Component {
                             variant="outlined"
                             rows="5"
                             style={assignmentCreation}
+                            value={this.state.question}
                             onChange={this.handleQuestionInput}
                         /><br/>
+                        <TextField
+                            id="outlined-textarea"
+                            label="Enter solution"
+                            placeholder="Enter question followed by answer"
+                            margin="normal"
+                            variant="outlined"
+                            rows="5"
+                            style={assignmentCreation}
+                            value={this.state.solution}
+                            onChange={this.handleSolutionInput}
+                        /><br/>
                         <RaisedButton style={{margin: 10}} onClick={this.updateQuestions}>Add</RaisedButton>
-                        <RaisedButton style={{margin: 10}}>Submit</RaisedButton>
+                        <RaisedButton style={{margin: 10}} onClick={this.createAssignment}>Submit</RaisedButton>
                     </div>
-
-
-                    {/*
-                    <h3 align="left">Students in grade: </h3>
-
-                    <div style={tableStyle}>
-                        <Table>
-                            <TableHeader editable="true">
-                                <TableRow>
-                                    <TableHeaderColumn align="center">ID</TableHeaderColumn>
-                                    <TableHeaderColumn align="center">Name</TableHeaderColumn>
-                                    <TableHeaderColumn align="center">Email</TableHeaderColumn>
-                                    <TableHeaderColumn align="center">Grade</TableHeaderColumn>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                {this.state.students.map(data => (
-                                    <TableRow key={data.id}>
-                                        <TableRowColumn align="center">{data.id}</TableRowColumn>
-                                        <TableRowColumn align="center">{data.name}</TableRowColumn>
-                                        <TableRowColumn align="center">{data.email}</TableRowColumn>
-                                        <TableRowColumn align="center">{data.grade}</TableRowColumn>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </div>*/}
                 </MuiThemeProvider>
             </div>
         )
+    }
+
+    updateQuestions() {
+        this.setState({
+            questions: [this.state.questions, {
+                question: this.state.question,
+                solution: this.state.solution
+            }].flat()
+        })
+        this.setState({question: ''})
+        this.setState({solution: ''})
+        console.log(this.state.questions)
     }
 
     handleQuestionInput(e) {
         this.setState({question: e.target.value});
     }
 
-    updateQuestions() {
-        let tmp = this.state.questions + this.state.question;
-        this.setState({
-            questions: tmp
-        })
+    handleSolutionInput(e) {
+        this.setState({solution: e.target.value});
+    }
+
+    handleTitle(e) {
+        this.setState({title: e.target.value});
+    }
+
+    createAssignment() {
+        let description = ''
+        let solution = ''
+        for (let i = 0; i < this.state.questions.length; i++) {
+            let data = this.state.questions[i];
+            description += data.question;
+            solution += data.solution;
+            if (i < this.state.questions.length - 1) {
+                description += ';';
+                solution += ';';
+            }
+        }
+        let assignment = {
+            title: this.state.title,
+            description: description,
+            solution: solution,
+            author: this.state.author,
+            grade: this.state.grade,
+            deadline: new Date().toLocaleDateString()
+        }
+        console.log(JSON.stringify(assignment));
+        fetch('http://localhost:8080/teacher/createAssignment', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(assignment)
+
+        }).then(r => {r.json()
+            if (r.status == 200) {
+                alert("Assignment created Successfully");
+            }
+        }).then((data) => {
+                console.log(data);
+            })
     }
 }
 

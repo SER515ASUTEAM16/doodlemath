@@ -203,7 +203,8 @@ class LowerGrade extends React.Component {
             answers: [],
             count: 0,
             score: 0,
-            answer: ""
+            answer: "",
+            resultValue: ""
         };
     }
 
