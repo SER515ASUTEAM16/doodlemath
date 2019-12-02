@@ -16,13 +16,13 @@ import Blockly from 'blockly'
 
 const toolbox = `
          <xml>
-           <category name="Numbers">                                        //NUMBERS Category created
+           <category name="Numbers" categorystyle="math_category">                                        //NUMBERS Category created
                <block type="math_number">              
                     <field name="NUM">0</field>                             //NUMBER added as a block and is editable
                </block>  
            </category>
            
-           <category name="Operators">                                      //OPERATORS category created
+           <category name="Operators" categorystyle="loop_category">                                      //OPERATORS category created
                 <block type="math_arithmetic" editable="false">
                     <field name="OP">ADD</field>                            //ADDITION operator added as a block
                     <value name="A">
@@ -77,21 +77,22 @@ const toolbox = `
                 </block>
            </category>
            
-            <Category name="Trignometry">                                   //TRIGNOMETRY category created
+            <Category name="Trignometry" categorystyle="text_category">                                   //TRIGNOMETRY category created
                 <block type="math_trig">                                   
                 </block>
             </Category>
             
-            <Category name="Compare">                                       //COMPARE category created
-                <block type="logic_compare">                                //RELATIONAL operators added as a dropdown option
+            <Category name="Compare" categorystyle="logic_category">                                       //COMPARE category created
+                <block type="logic_compare" style="logic_blocks">                                //RELATIONAL operators added as a dropdown option
                 </block>
             </Category>
             
-            <category name="Unary">                                   //EXPONENTIAL category created
+            <category name="Unary" categorystyle="list_category">                                   //EXPONENTIAL category created
                 <block type="math_single">                                  //UNARY OPERATORS added as a dropdown option
                 </block>
             </category>
-             <category name="Variables">
+            
+             <category name="Variables" categorystyle="colour_category">
                  <block type="graph_get_x"></block>
              </category>
          </xml>`

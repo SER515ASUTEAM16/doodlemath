@@ -16,7 +16,7 @@ import Blockly from 'blockly'
 
 const toolbox = `
          <xml>
-           <category name="Numbers">                                        //NUMBERS Category created
+           <category  name="Numbers" categorystyle="math_category">                                        //NUMBERS Category created
                <block type="math_number" editable="false">              
                     <field name="NUM">0</field>                             //0 added as a block
                </block>
@@ -49,7 +49,7 @@ const toolbox = `
                </block>
            </category>
            
-           <category name="Operators">                                      //OPERATORS category created
+           <category name="Operators" categorystyle="loop_category">                                      //OPERATORS category created
                 <block type="math_arithmetic" editable="false">
                     <field name="OP">ADD</field>                            //ADDITION operator added as a block
                     <value name="A">
@@ -104,7 +104,7 @@ const toolbox = `
                 </block>
            </category>
            
-            <category name="Compare">                                       //COMPARE category created 
+            <category name="Compare" categorystyle="logic_category">                                       //COMPARE category created 
                 <block type="logic_compare" editable = "false">
                     <field name="OP">EQ</field>                             //EQUALITY added as a block
                     <value name="A">
