@@ -28,7 +28,7 @@ import Register from "./Register";
 function UserLogin(props) {
 
     if (props.role === "teacher") {
-        return (<Teacher/>)
+        return (<Teacher grade={props.grade} author={props.name}/>)
     } else if (props.role === "student") {
         if (props.grade === "1-5") {
             return (<LowerGrade/>)
@@ -119,7 +119,7 @@ class LoginControl extends React.Component {
                             userRole: data.role,
                             grade: data.grade
                         });
-                        console.log("Login success");
+                            console.log("Login success");
                     }
                 })
         } else {
@@ -176,7 +176,7 @@ class LoginControl extends React.Component {
                 <div className="App">
                     <header className="App-header">
                         <span>
-                            <img src="logo.png" style={{height: "40px"}}></img>
+                            <img src="logo.png" style={{height: "40px"}}/>
                             <span style={{position: 'absolute', top: '12px', marginLeft: '10px'}}>DoodleMath</span>
                         </span>
                     </header>
@@ -188,11 +188,11 @@ class LoginControl extends React.Component {
                 <div className="App">
                     <header className="App-header">
                         <span>
-                            <img src="logo.png" style={{height: "40px"}}></img>
+                            <img src="logo.png" style={{height: "40px"}}/>
                             <span style={{position: 'absolute', top: '12px', marginLeft: '10px'}}>DoodleMath</span>
                         </span>
                     </header>
-                    <UserLogin grade={this.state.grade} role={this.state.userRole}/>
+                    <UserLogin grade={this.state.grade} name={this.state.userName} role={this.state.userRole}/>
                 </div>
             );
         }
