@@ -43,6 +43,7 @@ class Register extends Component {
         };
     }
 
+    //Registering the user
     registerUser() {
         let input = {
             name: this.state.userName,
@@ -94,22 +95,22 @@ class Register extends Component {
         return (
             <MuiThemeProvider>
                 <div>                                       {/*Front page UI*/}
-                    <h2>Create new account</h2>                          {/*Creating new account*/}
-                    <TextField                                              //Name field
+                    <h2>Create new account</h2>
+                    <TextField
                         value={this.state.userName}
                         onChange={this.handleUserNameInput}
                         hintText="Name"
                         floatingLabelText="Name"
                     />
                     <br/>
-                    <TextField                                              //Email field
+                    <TextField
                         value={this.state.Email}
                         onChange={this.handleEmailInput}
                         hintText="Email"
                         floatingLabelText="Email"
                     />
                     <br/>
-                    <TextField                                              //Password field
+                    <TextField
                         value={this.state.password}
                         onChange={this.handlePassInput}
                         type="password"
@@ -136,7 +137,7 @@ class Register extends Component {
                         </RadioGroup>
                     </FormControl>
                     <br/>
-                    <br/>                           {/*Button for register*/}
+                    <br/>
                     <RaisedButton inputs={this.state} label="Register" primary={true} onClick={this.registerUser}/>
                 </div>
             </MuiThemeProvider>

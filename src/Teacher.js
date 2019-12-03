@@ -80,7 +80,7 @@ class Teacher extends React.Component {
 
                     <h3 style={{margin: 10}} align="left">Create new assignment:</h3>
                     <div align='left'>
-                        <TextField                                      //title
+                        <TextField
                             id="outlined-textarea"
                             label="Title"
                             placeholder="Title of the assignment"
@@ -89,7 +89,7 @@ class Teacher extends React.Component {
                             style={assignmentCreation}
                             onChange={this.handleTitle}
                         /><br/>
-                        <TextField                                              //enter question
+                        <TextField
                             id="outlined-textarea"
                             label="Enter question"
                             placeholder="Enter question followed by answer"
@@ -100,7 +100,7 @@ class Teacher extends React.Component {
                             value={this.state.question}
                             onChange={this.handleQuestionInput}
                         /><br/>
-                        <TextField                                                      //enter solution
+                        <TextField
                             id="outlined-textarea"
                             label="Enter solution"
                             placeholder="Enter question followed by answer"

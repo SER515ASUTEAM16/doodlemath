@@ -55,14 +55,14 @@ function GustLogin(props) {
                 <br/>                                       {/*Front page UI*/}
                 <h2>Sign in</h2>
                 <br/>
-                <TextField                                 //Username field
+                <TextField
                     value={props.username}
                     onChange={props.onUserChange}
                     hintText="Enter your Username"
                     floatingLabelText="Username"
                 />
                 <br/>
-                <TextField                                  //Password field
+                <TextField
                     value={props.password}
                     onChange={props.onPassChange}
                     type="password"
@@ -71,7 +71,7 @@ function GustLogin(props) {
                 />
                 <br/>
                 <br/>
-                <br/>                                       {/*Login Button*/}
+                <br/>
                 <RaisedButton label="Log In" primary={true} onClick={props.onClick}/>
             </div>
         </MuiThemeProvider>

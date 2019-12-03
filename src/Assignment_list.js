@@ -49,12 +49,12 @@ class Assignment_list extends React.Component {
     render() {
         return (
             <div class="Assignment_list">
-                <h3 align="left">assignments: </h3>             {/*assignments table*/}
+                <h3 align="left">assignments: </h3>
                 <MuiThemeProvider>
                     <div style={tableStyle}>
                         <Table>
                             <TableHeader editable="false">
-                                <TableRow>                                                                  {/*Assignment table*/}
+                                <TableRow>
                                     <TableHeaderColumn align="center">Assignment Name</TableHeaderColumn>
                                     <TableHeaderColumn align="center">Due Date</TableHeaderColumn>
                                     <TableHeaderColumn align="center">Status</TableHeaderColumn>

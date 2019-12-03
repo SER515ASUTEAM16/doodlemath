@@ -56,12 +56,12 @@ class Teacher_assignments extends React.Component {
             return (
                 <div class="Teacher_assignments">
                     <h3 align="left">Assignments:</h3>
-                    <MuiThemeProvider>                  {/*Create assignment*/}
+                    <MuiThemeProvider>
                         <RaisedButton style={{width: 200}} primary={true} variant="contained" onClick={this.loadCreateAssign}>
                             Create Assignment
                         </RaisedButton>
                         <div style={tableStyle}>
-                            <Table>                                 {/*Assignment table*/}
+                            <Table>
                                 <TableHeader displaySelectAll={false} adjustForCheckbox={false} editable="false">
                                     <TableRow>
                                         <TableHeaderColumn align="center">Assignment Title</TableHeaderColumn>

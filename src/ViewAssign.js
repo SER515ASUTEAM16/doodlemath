@@ -63,9 +63,9 @@ class ViewAssign extends React.Component {
         if (!this.state.backFlag) {
             return (
                 <div className="viewAssign">
-                    <MuiThemeProvider>                  {/*Back button*/}
+                    <MuiThemeProvider>
                         <RaisedButton style={{margin: 10}} primary={true} onClick={this.goBack}>Back</RaisedButton>
-                        <Table>                                 {/*Display score*/}
+                        <Table>
                             <TableHeader displaySelectAll={false} adjustForCheckbox={false} editable="false">
                                 <TableRow>
                                     <TableHeaderColumn align="center">Student Name</TableHeaderColumn>
