@@ -118,8 +118,7 @@ class Register extends Component {
                     />
                     <br/>
                     <br/>
-                    //Radio button for role
-                    <FormControl  component="fieldset">
+                    <FormControl  component="fieldset">                                                  {/*Radio button for role!*/}
                         <FormLabel component="legend">Role</FormLabel>
                         <RadioGroup>
                             <FormControlLabel value="student" onChange={this.handleRoleInput} control={<Radio />} label="Student" />
@@ -128,9 +127,8 @@ class Register extends Component {
                     </FormControl>
                     <br/>
                     <br/>
-                    //Radio buttong for grade
                     <FormControl component="fieldset">
-                        <FormLabel component="legend">Grade</FormLabel>
+                        <FormLabel component="legend">Grade</FormLabel>                              {/*Radio button for grade!*/}
                         <RadioGroup>
                             <FormControlLabel value="1-5" onChange={this.handleGradeInput} control={<Radio />} label="Beginner (Grade 1-5)" />
                             <FormControlLabel value="6-8" onChange={this.handleGradeInput} control={<Radio />} label="Intermediate (Grade 5-8)" />

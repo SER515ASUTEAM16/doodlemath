@@ -21,6 +21,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Teacher from "./Teacher";
 import Register from "./Register";
+import About from "./About";
 
 
 
@@ -72,11 +73,14 @@ function GustLogin(props) {
                 <br/>
                 <br/>
                 <br/>
-                <RaisedButton label="Log In" primary={true} onClick={props.onClick}/>
+                <RaisedButton label="Log In" primary={true} onClick={props.onClick}/>           {/*Login button*/}
                 <br/>
                 <br/>
-                <RaisedButton label="Create new Account" primary={true} onClick={props.handleRegister}/>
+                <RaisedButton label="Create new Account" primary={true} onClick={props.handleRegister}/>        {/*Register button*/}
                 <br/>
+                <br/>
+                <br/>
+                <RaisedButton label="About the project" primary={false} onClick={props.clickedAbout}/>          {/*About button*/}
             </div>
         </MuiThemeProvider>
     );
@@ -91,6 +95,7 @@ class LoginControl extends React.Component {
         this.handleUserNameInput = this.handleUserNameInput.bind(this);
         this.handlePassInput = this.handlePassInput.bind(this);
         this.handleRegister = this.handleRegister.bind(this);
+        this.clickedAbout = this.clickedAbout.bind(this);
 
         this.state = {
             isLoggedIn: false,
@@ -98,7 +103,8 @@ class LoginControl extends React.Component {
             password: '',
             userRole: '',
             grade: '',
-            registerFlag: false
+            registerFlag: false,
+            aboutFlag: false
         };
     }
 
@@ -176,6 +182,15 @@ class LoginControl extends React.Component {
         }
     }
 
+    //When about is pressed
+    clickedAbout() {
+        if (this.state.clickedAbout) {
+            this.setState({aboutFlag: false});
+        } else if (!this.state.aboutFlag) {
+            this.setState({aboutFlag: true});
+        }
+    }
+
     render() {                                          //prints LOGIN UI
         if (this.state.isLoggedIn === false) {
             return (
@@ -208,6 +223,9 @@ class LoginControl extends React.Component {
         if (this.state.registerFlag) {
             return <Register handleRegister={this.handleRegister}/>
         }
+        if (this.state.aboutFlag) {
+            return <About clickedAbout={this.clickedAbout}/>
+        }
         return <GustLogin
             username={this.state.userName}
             password={this.state.password}
@@ -215,6 +233,7 @@ class LoginControl extends React.Component {
             onPassChange={this.handlePassInput}
             onClick={this.handleLoginClick}
             handleRegister={this.handleRegister}
+            clickedAbout={this.clickedAbout}
         />
     }
 }
