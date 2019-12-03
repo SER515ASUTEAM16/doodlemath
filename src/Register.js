@@ -123,9 +123,6 @@ class Register extends Component {
                     />
                     <br/>
                     <RaisedButton inputs={this.state} label="Register" primary={true} onClick={this.registerUser}/>
-                    <br/>
-                    <br/>
-                    <RaisedButton label="Already a member" primary={true} onClick={this.props.handleRegister}/>
                 </div>
             </MuiThemeProvider>
         )

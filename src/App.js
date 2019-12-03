@@ -12,10 +12,6 @@
 //FRONT END blocks
 import React from 'react';
 import './App.css';
-import LowerGrade from "./blocks/LowerGrade";
-import IntermediateGrade from "./blocks/IntermediateGrade"
-import AdvancedGrade from "./blocks/AdvancedGrade";
-import {Route, Link, BrowserRouter as Router} from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
@@ -23,19 +19,21 @@ import Teacher from "./Teacher";
 import Register from "./Register";
 import Assignment_list from "./Assignment_list";
 import Teacher_assignments from "./Teacher_assignments";
+
 //setting paths and routes, assigning buttons and values to them
 
 
 function UserLogin(props) {
 
-    if (props.role === "teacher") {
-        // return (<Teacher grade={props.grade} author={props.name}/>)
-        return (<Teacher_assignments grade={props.grade} name={props.name} />)
+    if (props.role === "admin") {
+        return (<Register/>)
+    } else if (props.role === "teacher") {
+        return (<Teacher_assignments grade={props.grade} name={props.name}/>)
     } else if (props.role === "student") {
         if (props.grade === "1-5") {
             return (<Assignment_list name={props.name} role={props.userRole}/>)
         } else if (props.grade === "6-8") {
-            return (<Assignment_list name={props.name} />)
+            return (<Assignment_list name={props.name}/>)
         }
         if (props.grade === "9-12") {
             return (<Assignment_list name={props.name}/>)
@@ -71,9 +69,6 @@ function GustLogin(props) {
                 />
                 <br/>
                 <RaisedButton label="Log In" primary={true} onClick={props.onClick}/>
-                <br/>
-                <br/>
-                <RaisedButton label="Create new Account" primary={true} onClick={props.handleRegister}/>
             </div>
         </MuiThemeProvider>
     );
@@ -87,15 +82,13 @@ class LoginControl extends React.Component {
         this.handleLogoutClick = this.handleLogoutClick.bind(this);
         this.handleUserNameInput = this.handleUserNameInput.bind(this);
         this.handlePassInput = this.handlePassInput.bind(this);
-        this.handleRegister = this.handleRegister.bind(this);
 
         this.state = {
             isLoggedIn: false,
             userName: '',
             password: '',
             userRole: '',
-            grade: '',
-            registerFlag: false
+            grade: ''
         };
     }
 
@@ -120,7 +113,7 @@ class LoginControl extends React.Component {
                             userRole: data.role,
                             grade: data.grade
                         });
-                            console.log("Login success");
+                        console.log("Login success");
                     }
                 })
         } else {
@@ -161,14 +154,6 @@ class LoginControl extends React.Component {
     //When password field changed
     handlePassInput(e) {
         this.setState({password: e.target.value});
-    }
-
-    handleRegister() {
-        if (this.state.registerFlag) {
-            this.setState({registerFlag: false});
-        } else if (!this.state.registerFlag) {
-            this.setState({registerFlag: true});
-        }
     }
 
     render() {                                          //prints LOGIN UI
