@@ -16,6 +16,12 @@ import React, {Component} from 'react'
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 class Register extends Component {
 
@@ -108,19 +114,25 @@ class Register extends Component {
                         floatingLabelText="Password"
                     />
                     <br/>
-                    <TextField
-                        value={this.state.userRole}
-                        onChange={this.handleRoleInput}
-                        hintText="Role"
-                        floatingLabelText="Role(student / teacher)"
-                    />
                     <br/>
-                    <TextField
-                        value={this.state.grade}
-                        onChange={this.handleGradeInput}
-                        hintText="Grade"
-                        floatingLabelText="Enter your Grade(1-5 / 6-8 / 9-12)"
-                    />
+                    <FormControl  component="fieldset">
+                        <FormLabel component="legend">Role</FormLabel>
+                        <RadioGroup>
+                            <FormControlLabel value="student" onChange={this.handleRoleInput} control={<Radio />} label="Student" />
+                            <FormControlLabel value="teacher" onChange={this.handleRoleInput} control={<Radio />} label="Teacher" />
+                        </RadioGroup>
+                    </FormControl>
+                    <br/>
+                    <br/>
+                    <FormControl component="legend">
+                        <FormLabel component="legend">Grade</FormLabel>
+                        <RadioGroup>
+                            <FormControlLabel value="1-5" onChange={this.handleGradeInput} control={<Radio />} label="Beginner (Grade 1-5)" />
+                            <FormControlLabel value="6-8" onChange={this.handleGradeInput} control={<Radio />} label="Intermediate (Grade 5-8)" />
+                            <FormControlLabel value="9-12" onChange={this.handleGradeInput} control={<Radio />} label="Advanced (Grade 9-12)" />
+                        </RadioGroup>
+                    </FormControl>
+                    <br/>
                     <br/>
                     <RaisedButton inputs={this.state} label="Register" primary={true} onClick={this.registerUser}/>
                     <br/>

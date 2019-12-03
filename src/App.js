@@ -70,6 +70,7 @@ function GustLogin(props) {
                     floatingLabelText="Password"
                 />
                 <br/>
+                <br/>
                 <RaisedButton label="Log In" primary={true} onClick={props.onClick}/>
                 <br/>
                 <br/>

@@ -16,23 +16,23 @@ import Blockly from 'blockly'
 
 const toolbox = `
          <xml>
-             <category name="Numbers">                                        //NUMBERS Category created
+             <category name="Numbers" categorystyle="math_category">                                        //NUMBERS Category created
                <block type="math_number">              
                     <field name="NUM">0</field>                             //NUMBER added as a block and is editable
                </block>  
            </category>
            
-           <category name="Operators">                                      //OPERATOR category created
+           <category name="Operators" categorystyle="loop_category">                                      //OPERATOR category created
                 <block type="math_arithmetic">                              //All binary operators present with dropdown option
                 </block>
            </category>
             
-           <Category name="Compare">                                        //COMPARE category created
+           <Category name="Compare" categorystyle="logic_category">                                        //COMPARE category created
                 <block type="logic_compare">                                //All relational operators present with dropdown option
                 </block>
            </Category>
             
-           <category name="Powers">                                         //POWERS category created
+           <category name="Powers" categorystyle="list_category">                                         //POWERS category created
                 <block type="math_single" editable="false">
                     <field name="OP">EXP</field>                            //E TO THE POWER function added as a block.
                     <value name="A">
