@@ -9,15 +9,19 @@
 ;==================================================================================
  */
 
-//FRONT END blocks
+//FRONT END canvas
 import React from 'react';
 import './App.css';
+import LowerGrade from "./Students/canvas/LowerGrade";
+import IntermediateGrade from "./Students/canvas/IntermediateGrade"
+import AdvancedGrade from "./Students/canvas/AdvancedGrade";
+import {Route, Link, BrowserRouter as Router} from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Teacher from "./Teacher";
 import Register from "./Register";
-import Assignment_list from "./Assignment_list";
+import Assignment_list from "./Students/Assignment_list";
 import Teacher_assignments from "./Teacher_assignments";
 
 //setting paths and routes, assigning buttons and values to them
@@ -30,14 +34,10 @@ function UserLogin(props) {
     } else if (props.role === "teacher") {
         return (<Teacher_assignments grade={props.grade} name={props.name}/>)
     } else if (props.role === "student") {
-        if (props.grade === "1-5") {
-            return (<Assignment_list name={props.name} role={props.userRole}/>)
-        } else if (props.grade === "6-8") {
-            return (<Assignment_list name={props.name}/>)
+        if (props.grade === "1-5" ||props.grade === "6-8" ||props.grade === "9-12") {
+            return (<Assignment_list name={props.name} grade={props.grade}/>)
         }
-        if (props.grade === "9-12") {
-            return (<Assignment_list name={props.name}/>)
-        } else {
+         else {
             return (<h1>Invalid grade</h1>)
         }
     } else {
