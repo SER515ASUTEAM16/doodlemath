@@ -12,23 +12,15 @@
 //FRONT END canvas
 import React from 'react';
 import './App.css';
-import LowerGrade from "./Students/canvas/LowerGrade";
-import IntermediateGrade from "./Students/canvas/IntermediateGrade"
-import AdvancedGrade from "./Students/canvas/AdvancedGrade";
-import {Route, Link, BrowserRouter as Router} from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import Teacher from "./Teacher";
 import Register from "./Register";
 import Assignment_list from "./Students/Assignment_list";
 import Teacher_assignments from "./Teacher_assignments";
-
-//setting paths and routes, assigning buttons and values to them
-
+import Button from "@material-ui/core/Button";
 
 function UserLogin(props) {
-
     if (props.role === "admin") {
         return (<Register/>)
     } else if (props.role === "teacher") {
@@ -177,6 +169,9 @@ class LoginControl extends React.Component {
                         <span>
                             <img src="logo.png" style={{height: "40px"}}/>
                             <span style={{position: 'absolute', top: '12px', marginLeft: '10px'}}>DoodleMath</span>
+                        <Button variant="contained" style={{width: 60,float: 'right',marginRight: 50}} color="primary" onClick={this.handleLogoutClick}>
+                            Logout
+                        </Button>
                         </span>
                     </header>
                     <UserLogin name={this.state.userName} grade={this.state.grade} role={this.state.userRole}/>
@@ -198,6 +193,7 @@ class LoginControl extends React.Component {
             handleRegister={this.handleRegister}
         />
     }
+
 }
 
 export default LoginControl;
