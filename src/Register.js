@@ -70,14 +70,17 @@ class Register extends Component {
         this.setState({userName: e.target.value});
     }
 
+    //When email field changed
     handleEmailInput(e) {
         this.setState({Email: e.target.value});
     }
 
+    //When grade is selected
     handleGradeInput(e) {
         this.setState({grade: e.target.value});
     }
 
+    //When role is selected
     handleRoleInput(e) {
         this.setState({userRole: e.target.value});
     }
@@ -90,23 +93,23 @@ class Register extends Component {
     render() {
         return (
             <MuiThemeProvider>
-                <div>
-                    <h2>Create new account</h2>
-                    <TextField
+                <div>                                       {/*Front page UI*/}
+                    <h2>Create new account</h2>                          {/*Creating new account*/}
+                    <TextField                                              //Name field
                         value={this.state.userName}
                         onChange={this.handleUserNameInput}
                         hintText="Name"
                         floatingLabelText="Name"
                     />
                     <br/>
-                    <TextField
+                    <TextField                                              //Email field
                         value={this.state.Email}
                         onChange={this.handleEmailInput}
                         hintText="Email"
                         floatingLabelText="Email"
                     />
                     <br/>
-                    <TextField
+                    <TextField                                              //Password field
                         value={this.state.password}
                         onChange={this.handlePassInput}
                         type="password"
@@ -115,7 +118,7 @@ class Register extends Component {
                     />
                     <br/>
                     <br/>
-                    <FormControl  component="fieldset">
+                    <FormControl  component="fieldset">                         {/*Radio buttons for role*/}
                         <FormLabel component="legend">Role</FormLabel>
                         <RadioGroup>
                             <FormControlLabel value="student" onChange={this.handleRoleInput} control={<Radio />} label="Student" />
@@ -124,7 +127,7 @@ class Register extends Component {
                     </FormControl>
                     <br/>
                     <br/>
-                    <FormControl component="legend">
+                    <FormControl component="fieldset">                          {/*Radio buttons for grade*/}
                         <FormLabel component="legend">Grade</FormLabel>
                         <RadioGroup>
                             <FormControlLabel value="1-5" onChange={this.handleGradeInput} control={<Radio />} label="Beginner (Grade 1-5)" />
@@ -133,7 +136,7 @@ class Register extends Component {
                         </RadioGroup>
                     </FormControl>
                     <br/>
-                    <br/>
+                    <br/>                           {/*Button for register*/}
                     <RaisedButton inputs={this.state} label="Register" primary={true} onClick={this.registerUser}/>
                 </div>
             </MuiThemeProvider>

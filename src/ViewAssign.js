@@ -38,7 +38,7 @@ class ViewAssign extends React.Component {
         };
     }
 
-    componentDidMount() {
+    componentDidMount() {                               //Fetching the student assignemnt API
         fetch('http://localhost:8080/teacher/studentassignment/' + this.props.id)
             .then(r => r.json())
             .then((data) => {
@@ -63,9 +63,9 @@ class ViewAssign extends React.Component {
         if (!this.state.backFlag) {
             return (
                 <div className="viewAssign">
-                    <MuiThemeProvider>
+                    <MuiThemeProvider>                  {/*Back button*/}
                         <RaisedButton style={{margin: 10}} primary={true} onClick={this.goBack}>Back</RaisedButton>
-                        <Table>
+                        <Table>                                 {/*Display score*/}
                             <TableHeader displaySelectAll={false} adjustForCheckbox={false} editable="false">
                                 <TableRow>
                                     <TableHeaderColumn align="center">Student Name</TableHeaderColumn>

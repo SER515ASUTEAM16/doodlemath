@@ -43,7 +43,7 @@ class Teacher_assignments extends React.Component {
         };
     }
 
-    componentDidMount() {
+    componentDidMount() {                   //Fetch assignemnt API
         fetch('http://localhost:8080/teacher/getAssignments/' + this.state.user)
             .then(r => r.json())
             .then((data) => {
@@ -56,12 +56,12 @@ class Teacher_assignments extends React.Component {
             return (
                 <div class="Teacher_assignments">
                     <h3 align="left">Assignments:</h3>
-                    <MuiThemeProvider>
+                    <MuiThemeProvider>                  {/*Create assignment*/}
                         <RaisedButton style={{width: 200}} primary={true} variant="contained" onClick={this.loadCreateAssign}>
                             Create Assignment
                         </RaisedButton>
                         <div style={tableStyle}>
-                            <Table>
+                            <Table>                                 {/*Assignment table*/}
                                 <TableHeader displaySelectAll={false} adjustForCheckbox={false} editable="false">
                                     <TableRow>
                                         <TableHeaderColumn align="center">Assignment Title</TableHeaderColumn>
@@ -96,6 +96,7 @@ class Teacher_assignments extends React.Component {
         }
     }
 
+    //Load assignments
     loadAssignment(e) {
         console.log(e.target.value);
         if(e.target.value !== undefined){
@@ -108,6 +109,7 @@ class Teacher_assignments extends React.Component {
         }
     }
 
+    //Create assignment
     loadCreateAssign(e) {
         this.setState({
             openFlag: false,

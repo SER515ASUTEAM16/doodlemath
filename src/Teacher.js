@@ -59,7 +59,7 @@ class Teacher extends React.Component {
     render() {
         return (
 
-            <div class="teacher">
+            <div class="teacher">                           {/*teacher ui*/}
                 <MuiThemeProvider>
                     <Table>
                         <TableHeader editable="true">
@@ -80,7 +80,7 @@ class Teacher extends React.Component {
 
                     <h3 style={{margin: 10}} align="left">Create new assignment:</h3>
                     <div align='left'>
-                        <TextField
+                        <TextField                                      //title
                             id="outlined-textarea"
                             label="Title"
                             placeholder="Title of the assignment"
@@ -89,7 +89,7 @@ class Teacher extends React.Component {
                             style={assignmentCreation}
                             onChange={this.handleTitle}
                         /><br/>
-                        <TextField
+                        <TextField                                              //enter question
                             id="outlined-textarea"
                             label="Enter question"
                             placeholder="Enter question followed by answer"
@@ -100,7 +100,7 @@ class Teacher extends React.Component {
                             value={this.state.question}
                             onChange={this.handleQuestionInput}
                         /><br/>
-                        <TextField
+                        <TextField                                                      //enter solution
                             id="outlined-textarea"
                             label="Enter solution"
                             placeholder="Enter question followed by answer"
@@ -119,6 +119,7 @@ class Teacher extends React.Component {
         )
     }
 
+    //When question is updated
     updateQuestions() {
         this.setState({
             questions: [this.state.questions, {
@@ -131,18 +132,22 @@ class Teacher extends React.Component {
         console.log(this.state.questions)
     }
 
+    //When question is input
     handleQuestionInput(e) {
         this.setState({question: e.target.value});
     }
 
+    //When solution is input
     handleSolutionInput(e) {
         this.setState({solution: e.target.value});
     }
 
+    //Handles title
     handleTitle(e) {
         this.setState({title: e.target.value});
     }
 
+    //Creating assignments
     createAssignment() {
         let description = ''
         let solution = ''

@@ -49,12 +49,12 @@ class Assignment_list extends React.Component {
     render() {
         return (
             <div class="Assignment_list">
-                <h3 align="left">assignments: </h3>
+                <h3 align="left">assignments: </h3>             {/*assignments table*/}
                 <MuiThemeProvider>
                     <div style={tableStyle}>
                         <Table>
                             <TableHeader editable="false">
-                                <TableRow>
+                                <TableRow>                                                                  {/*Assignment table*/}
                                     <TableHeaderColumn align="center">Assignment Name</TableHeaderColumn>
                                     <TableHeaderColumn align="center">Due Date</TableHeaderColumn>
                                     <TableHeaderColumn align="center">Status</TableHeaderColumn>
@@ -82,7 +82,7 @@ class Assignment_list extends React.Component {
     }
 }
 
-const tableStyle = {
+const tableStyle = {                            //Styling the table
     padding: '10px',
     margin: '10px',
     border: '2px solid black'

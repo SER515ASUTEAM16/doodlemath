@@ -25,11 +25,11 @@ import Teacher_assignments from "./Teacher_assignments";
 
 function UserLogin(props) {
 
-    if (props.role === "admin") {
+    if (props.role === "admin") {                                   //Admin role
         return (<Register/>)
-    } else if (props.role === "teacher") {
+    } else if (props.role === "teacher") {                          //Teacher role*
         return (<Teacher_assignments grade={props.grade} name={props.name}/>)
-    } else if (props.role === "student") {
+    } else if (props.role === "student") {                          //Student roles
         if (props.grade === "1-5") {
             return (<Assignment_list name={props.name} role={props.userRole}/>)
         } else if (props.grade === "6-8") {
@@ -52,15 +52,17 @@ function GustLogin(props) {
     return (
         <MuiThemeProvider>
             <div>
+                <br/>                                       {/*Front page UI*/}
                 <h2>Sign in</h2>
-                <TextField
+                <br/>
+                <TextField                                 //Username field
                     value={props.username}
                     onChange={props.onUserChange}
                     hintText="Enter your Username"
                     floatingLabelText="Username"
                 />
                 <br/>
-                <TextField
+                <TextField                                  //Password field
                     value={props.password}
                     onChange={props.onPassChange}
                     type="password"
@@ -69,6 +71,7 @@ function GustLogin(props) {
                 />
                 <br/>
                 <br/>
+                <br/>                                       {/*Login Button*/}
                 <RaisedButton label="Log In" primary={true} onClick={props.onClick}/>
             </div>
         </MuiThemeProvider>
@@ -84,7 +87,7 @@ class LoginControl extends React.Component {
         this.handleUserNameInput = this.handleUserNameInput.bind(this);
         this.handlePassInput = this.handlePassInput.bind(this);
 
-        this.state = {
+        this.state = {                                                  //Defining states
             isLoggedIn: false,
             userName: '',
             password: '',
