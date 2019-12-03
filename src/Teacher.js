@@ -36,7 +36,7 @@ class Teacher extends React.Component {
 
     componentDidMount() {
         fetch('http://localhost:8080/teacher/getAllStudentsInGrade/1-5')
-            .then(r => r.json())
+            .then(r => r.json())                //Fetching the API
             .then((data) => {
                 this.setState({students: data})
             })
@@ -59,7 +59,7 @@ class Teacher extends React.Component {
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                {this.state.students.map(data => (
+                                {this.state.students.map(data => (                       //Creating a table format to display it as row
                                     <TableRow key={data.id}>
                                         <TableRowColumn align="center">{data.id}</TableRowColumn>
                                         <TableRowColumn align="center">{data.name}</TableRowColumn>
@@ -72,7 +72,7 @@ class Teacher extends React.Component {
                     </div>
                 </MuiThemeProvider>
 
-                <h3 align="left">Create new assignment:</h3>
+                <h3 align="left">Create new assignment:</h3>                      //Defining rows
                 <div>
                     <TextField
                         id="outlined-textarea"
@@ -102,7 +102,7 @@ class Teacher extends React.Component {
 }
 
 
-const tableStyle = {
+const tableStyle = {                                        //Styling the table
     padding: '10px',
     margin: '10px',
     border: '2px solid black'

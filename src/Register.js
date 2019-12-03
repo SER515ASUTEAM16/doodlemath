@@ -10,7 +10,7 @@
 ;==================================================================================
  */
 
-//Teacher class
+//UI for registering
 
 import React, {Component} from 'react'
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
@@ -25,7 +25,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 class Register extends Component {
 
-    constructor(props) {
+    constructor(props) {                                            //Defining handle events
         super(props);
         this.handleEmailInput = this.handleEmailInput.bind(this);
         this.handleRoleInput = this.handleRoleInput.bind(this);
@@ -34,7 +34,7 @@ class Register extends Component {
         this.handleGradeInput = this.handleGradeInput.bind(this);
         this.registerUser = this.registerUser.bind(this);
 
-        this.state = {
+        this.state = {                                                                  //Declaring the state
             userName: '',
             Email: '',
             password: '',
@@ -44,7 +44,7 @@ class Register extends Component {
     }
 
     registerUser() {
-        let input = {
+        let input = {                                                                   //storing input
             name: this.state.userName,
             email: this.state.Email,
             role: this.state.userRole,
@@ -70,14 +70,17 @@ class Register extends Component {
         this.setState({userName: e.target.value});
     }
 
+    //When email field is changes
     handleEmailInput(e) {
         this.setState({Email: e.target.value});
     }
 
+    //When grade is selected
     handleGradeInput(e) {
         this.setState({grade: e.target.value});
     }
 
+    //When role is selected
     handleRoleInput(e) {
         this.setState({userRole: e.target.value});
     }
@@ -92,21 +95,21 @@ class Register extends Component {
             <MuiThemeProvider>
                 <div>
                     <h2>Create new account</h2>
-                    <TextField
+                    <TextField                                              //Field for Name
                         value={this.state.userName}
                         onChange={this.handleUserNameInput}
                         hintText="Name"
                         floatingLabelText="Name"
                     />
                     <br/>
-                    <TextField
+                    <TextField                                              //Field for email
                         value={this.state.Email}
                         onChange={this.handleEmailInput}
                         hintText="Email"
                         floatingLabelText="Email"
                     />
                     <br/>
-                    <TextField
+                    <TextField                                              //Field for password
                         value={this.state.password}
                         onChange={this.handlePassInput}
                         type="password"
@@ -115,6 +118,7 @@ class Register extends Component {
                     />
                     <br/>
                     <br/>
+                    //Radio button for role
                     <FormControl  component="fieldset">
                         <FormLabel component="legend">Role</FormLabel>
                         <RadioGroup>
@@ -124,7 +128,8 @@ class Register extends Component {
                     </FormControl>
                     <br/>
                     <br/>
-                    <FormControl component="legend">
+                    //Radio buttong for grade
+                    <FormControl component="fieldset">
                         <FormLabel component="legend">Grade</FormLabel>
                         <RadioGroup>
                             <FormControlLabel value="1-5" onChange={this.handleGradeInput} control={<Radio />} label="Beginner (Grade 1-5)" />

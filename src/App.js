@@ -22,14 +22,14 @@ import TextField from 'material-ui/TextField';
 import Teacher from "./Teacher";
 import Register from "./Register";
 
-//setting paths and routes, assigning buttons and values to them
 
 
+//Login page UI
 function UserLogin(props) {
 
-    if (props.role === "teacher") {
+    if (props.role === "teacher") {                         //selecting role as teacher
         return (<Teacher/>)
-    } else if (props.role === "student") {
+    } else if (props.role === "student") {                  //selection role as student
         if (props.grade === "1-5") {
             return (<LowerGrade/>)
         } else if (props.grade === "6-8") {
@@ -52,15 +52,17 @@ function GustLogin(props) {
     return (
         <MuiThemeProvider>
             <div>
+                <br/>
+                <br/>
                 <h2>Sign in</h2>
-                <TextField
+                <TextField                                      //username field
                     value={props.username}
                     onChange={props.onUserChange}
                     hintText="Enter your Username"
                     floatingLabelText="Username"
                 />
                 <br/>
-                <TextField
+                <TextField                                      //password field
                     value={props.password}
                     onChange={props.onPassChange}
                     type="password"
@@ -69,10 +71,12 @@ function GustLogin(props) {
                 />
                 <br/>
                 <br/>
+                <br/>
                 <RaisedButton label="Log In" primary={true} onClick={props.onClick}/>
                 <br/>
                 <br/>
                 <RaisedButton label="Create new Account" primary={true} onClick={props.handleRegister}/>
+                <br/>
             </div>
         </MuiThemeProvider>
     );
@@ -163,6 +167,7 @@ class LoginControl extends React.Component {
         this.setState({password: e.target.value});
     }
 
+    //When register button is pressed
     handleRegister() {
         if (this.state.registerFlag) {
             this.setState({registerFlag: false});
