@@ -52,7 +52,9 @@ function GustLogin(props) {
     return (
         <MuiThemeProvider>
             <div>
+                <br/>
                 <h2>Sign in</h2>
+                <br/>
                 <TextField
                     value={props.username}
                     onChange={props.onUserChange}
@@ -67,6 +69,7 @@ function GustLogin(props) {
                     hintText="Enter your Password"
                     floatingLabelText="Password"
                 />
+                <br/>
                 <br/>
                 <br/>
                 <RaisedButton label="Log In" primary={true} onClick={props.onClick}/>
