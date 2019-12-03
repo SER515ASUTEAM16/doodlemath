@@ -198,7 +198,6 @@ class LowerGrade extends React.Component {
 
         this.state = {                                                      //RESULT variable created
             result: "",
-            resultValue: "",
             assignment: [],
             answers: [],
             count: 0,
