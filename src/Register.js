@@ -124,7 +124,7 @@ class Register extends Component {
                     </FormControl>
                     <br/>
                     <br/>
-                    <FormControl component="legend">
+                    <FormControl component="fieldset">
                         <FormLabel component="legend">Grade</FormLabel>
                         <RadioGroup>
                             <FormControlLabel value="1-5" onChange={this.handleGradeInput} control={<Radio />} label="Beginner (Grade 1-5)" />
