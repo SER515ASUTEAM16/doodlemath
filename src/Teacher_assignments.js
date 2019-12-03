@@ -23,6 +23,7 @@ import {
 } from 'material-ui/Table';
 import Button from "@material-ui/core/Button";
 import Teacher from "./Teacher";
+import ViewAssign from "./ViewAssign";
 
 
 class Teacher_assignments extends React.Component {
@@ -34,6 +35,7 @@ class Teacher_assignments extends React.Component {
         this.loadCreateAssign = this.loadCreateAssign.bind(this);
 
         this.state = {
+            id: '',
             assignments: [],
             user: props.name,
             openFlag: false,
@@ -55,9 +57,8 @@ class Teacher_assignments extends React.Component {
                 <div class="Teacher_assignments">
                     <h3 align="left">Assignments:</h3>
                     <MuiThemeProvider>
-                        <RaisedButton fullWidth={50} variant="contained" color="primary"
-                                      onClick={this.loadCreateAssign}>
-                            Create New Assignment
+                        <RaisedButton style={{width: 200}} primary={true} variant="contained" onClick={this.loadCreateAssign}>
+                            Create Assignment
                         </RaisedButton>
                         <div style={tableStyle}>
                             <Table>
@@ -70,14 +71,13 @@ class Teacher_assignments extends React.Component {
                                 </TableHeader>
                                 <TableBody displayRowCheckbox={false}>
                                     {this.state.assignments.map(data => (
-                                        <TableRow key={data.id} value={data.id} onClick={this.loadAssignment}>
+                                        <TableRow key={data.id}>
                                             <TableRowColumn align="center">{data.title}</TableRowColumn>
                                             <TableRowColumn align="center">{data.description}</TableRowColumn>
                                             <TableRowColumn align="center">
-                                                <RaisedButton variant="contained" color="primary"
-                                                              value={data.id} onClick={this.loadAssignment}>
+                                                <Button value={data.id} onClick={this.loadAssignment}>
                                                     Open
-                                                </RaisedButton>
+                                                </Button>
                                             </TableRowColumn>
                                         </TableRow>
                                     ))}
@@ -92,26 +92,30 @@ class Teacher_assignments extends React.Component {
                 <Teacher grade={this.props.grade} author={this.state.user}/>
             )
         } else {
-            return (
-                <h3>Needed API to display assignment details by user</h3>
-            )
+            return (<ViewAssign grade={this.props.grade} name={this.state.user} id={this.state.id}/>)
         }
     }
 
     loadAssignment(e) {
-        this.setState({
-            openFlag: true,
-            createFlag: false
-        })
+        console.log(e.target.value);
+        if(e.target.value !== undefined){
+            this.setState({
+                id: e.target.value,
+                openFlag: true,
+                createFlag: false
+            })
+
+        }
     }
 
     loadCreateAssign(e) {
-        console.log("Hey")
         this.setState({
             openFlag: false,
             createFlag: true
         })
     }
+
+
 
 }
 
