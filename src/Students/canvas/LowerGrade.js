@@ -17,6 +17,7 @@ import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import TextField from "@material-ui/core/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Button from "@material-ui/core/Button";
 
 const toolbox = `
          <xml>
@@ -191,13 +192,15 @@ const toolbox = `
          </xml>`
 
 class LowerGrade extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.nextQuestion = this.nextQuestion.bind(this);
         this.handleResult = this.handleResult.bind(this);
 
-        this.state = {                                                      //RESULT variable created
+        this.state = {//RESULT variable created
             result: "",
+            isAssignmentPresent: props.isAssignmentPresent,
+            assignmentId: props.assignmentId,
             assignment: [],
             answers: [],
             count: 0,
@@ -211,38 +214,60 @@ class LowerGrade extends React.Component {
         Blockly.inject("blocklyDiv", {toolbox: toolbox});
         Blockly.getMainWorkspace().addChangeListener(this.printResult);
 
-
-        fetch('http://localhost:8080/student/assignment/45')
-            .then(r => r.json())
-            .then((data) => {
-                this.setState({
-                    assignment: data.description.split(";"),
-                    answers: data.solution.split(";")
+        if (this.state.isAssignmentPresent) {
+            console.log()
+            fetch('http://localhost:8080/student/assignment/' + this.state.assignmentId)
+                .then(r => r.json())
+                .then((data) => {
+                    this.setState({
+                        assignment: data.description.split(";"),
+                        answers: data.solution.split(";")
+                    })
                 })
-            })
+        }
     }
 
     render() {
+        function getAssignment() {
+            if (this.state.isAssignmentPresent) {
+                return (<>
+                    <h3>Assignment Question</h3>
+                    <TextareaAutosize
+                        style={{margin: 5, fontSize: 26, textAlign: "center", paddingTop: 15, width: 430, height: 70}}
+                        id="questions"
+                        aria-label="empty textarea" value={this.state.assignment[this.state.count]}
+                        readOnly="true"/>
+                    <TextField style={{margin: 5, width: 320}} onChange={this.handleResult} id="answer"
+                               label="Enter answer"
+                               value={this.state.answer} variant="outlined"/>
+                    <TextField style={{margin: 5, width: 80}} value={this.state.score} readOnly={true} id="score"
+                               label="Score"
+                               variant="outlined"/>
+                    <RaisedButton onClick={this.nextQuestion} style={{margin: 10}}>Submit</RaisedButton>
+                </>);
+            }
+        }
+
         return (
             <MuiThemeProvider>
                 <div>
-                    <TextareaAutosize style={{margin:5, fontSize: 26, textAlign:"center", paddingTop: 15 , width: 450, height: 70}} id="questions"
-                                      aria-label="empty textarea" value={this.state.assignment[this.state.count]}
-                                      readOnly="true"/>
+                    <div style={{display: 'inline-block', width: '100%'}}>
+                        <h3 align="left" style={{marginLeft: '20px', float: 'left'}}> Canvas</h3>
+                        <Button style={{margin: '20px', width: '248px', float: 'right'}} variant="contained"
+                                color="primary" onClick={this.props.toggleCanvas}>Go to Assignments</Button>
+                    </div>
                     <div id="blocklyContainer" style={{display: 'inline'}}>
                         <div id="blocklyDiv" ref="blocklyDiv"                                   //RESULT is printed
                              style={{height: '90vh', width: '900px', float: 'left'}}/>
                         <div style={{height: '480px'}}>
-                            <div style={{background: "#feecec78", paddingTop: '8px', paddingBottom: '8px'}}>Result</div>
+                            <div style={{background: "#feecec78", paddingTop: '8px', paddingBottom: '8px'}}>Result
+                                Section
+                            </div>
                             <div>
                                 <p>{this.state.result}</p>
                                 <p>Result : {this.state.resultValue}</p>
                             </div>
-                            <TextField style={{margin:5, width:320}} onChange={this.handleResult} id="answer" label="Enter answer"
-                                       variant="outlined"/>
-                            <TextField style={{margin:5, width:80}} value={this.state.score} readOnly={true} id="score" label="Score"
-                                       variant="outlined"/>
-                            <RaisedButton onClick={this.nextQuestion} style={{margin: 10}}>Submit</RaisedButton>
+                            {getAssignment.call(this)}
                         </div>
                     </div>
                 </div>
